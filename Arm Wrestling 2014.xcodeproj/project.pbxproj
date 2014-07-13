@@ -1,0 +1,420 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		4C5D18B619722C8F0084867C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5D18B519722C8F0084867C /* AppDelegate.swift */; };
+		4C5D18B819722C8F0084867C /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 4C5D18B719722C8F0084867C /* GameScene.sks */; };
+		4C5D18BA19722C8F0084867C /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5D18B919722C8F0084867C /* GameScene.swift */; };
+		4C5D18BC19722C8F0084867C /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5D18BB19722C8F0084867C /* GameViewController.swift */; };
+		4C5D18BF19722C8F0084867C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C5D18BD19722C8F0084867C /* Main.storyboard */; };
+		4C5D18C119722C8F0084867C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C5D18C019722C8F0084867C /* Images.xcassets */; };
+		4C5D18CD19722C900084867C /* Arm_Wrestling_2014Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5D18CC19722C900084867C /* Arm_Wrestling_2014Tests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		4C5D18C719722C900084867C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4C5D18A819722C8F0084867C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4C5D18AF19722C8F0084867C;
+			remoteInfo = "Arm Wrestling 2014";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		4C5D18B019722C8F0084867C /* Arm Wrestling 2014.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Arm Wrestling 2014.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4C5D18B419722C8F0084867C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4C5D18B519722C8F0084867C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		4C5D18B719722C8F0084867C /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
+		4C5D18B919722C8F0084867C /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
+		4C5D18BB19722C8F0084867C /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
+		4C5D18BE19722C8F0084867C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		4C5D18C019722C8F0084867C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		4C5D18C619722C900084867C /* Arm Wrestling 2014Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Arm Wrestling 2014Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4C5D18CB19722C900084867C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4C5D18CC19722C900084867C /* Arm_Wrestling_2014Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Arm_Wrestling_2014Tests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		4C5D18AD19722C8F0084867C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4C5D18C319722C900084867C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		4C5D18A719722C8F0084867C = {
+			isa = PBXGroup;
+			children = (
+				4C5D18B219722C8F0084867C /* Arm Wrestling 2014 */,
+				4C5D18C919722C900084867C /* Arm Wrestling 2014Tests */,
+				4C5D18B119722C8F0084867C /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		4C5D18B119722C8F0084867C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4C5D18B019722C8F0084867C /* Arm Wrestling 2014.app */,
+				4C5D18C619722C900084867C /* Arm Wrestling 2014Tests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		4C5D18B219722C8F0084867C /* Arm Wrestling 2014 */ = {
+			isa = PBXGroup;
+			children = (
+				4C5D18B519722C8F0084867C /* AppDelegate.swift */,
+				4C5D18B719722C8F0084867C /* GameScene.sks */,
+				4C5D18B919722C8F0084867C /* GameScene.swift */,
+				4C5D18BB19722C8F0084867C /* GameViewController.swift */,
+				4C5D18BD19722C8F0084867C /* Main.storyboard */,
+				4C5D18C019722C8F0084867C /* Images.xcassets */,
+				4C5D18B319722C8F0084867C /* Supporting Files */,
+			);
+			path = "Arm Wrestling 2014";
+			sourceTree = "<group>";
+		};
+		4C5D18B319722C8F0084867C /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				4C5D18B419722C8F0084867C /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		4C5D18C919722C900084867C /* Arm Wrestling 2014Tests */ = {
+			isa = PBXGroup;
+			children = (
+				4C5D18CC19722C900084867C /* Arm_Wrestling_2014Tests.swift */,
+				4C5D18CA19722C900084867C /* Supporting Files */,
+			);
+			path = "Arm Wrestling 2014Tests";
+			sourceTree = "<group>";
+		};
+		4C5D18CA19722C900084867C /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				4C5D18CB19722C900084867C /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		4C5D18AF19722C8F0084867C /* Arm Wrestling 2014 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4C5D18D019722C900084867C /* Build configuration list for PBXNativeTarget "Arm Wrestling 2014" */;
+			buildPhases = (
+				4C5D18AC19722C8F0084867C /* Sources */,
+				4C5D18AD19722C8F0084867C /* Frameworks */,
+				4C5D18AE19722C8F0084867C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Arm Wrestling 2014";
+			productName = "Arm Wrestling 2014";
+			productReference = 4C5D18B019722C8F0084867C /* Arm Wrestling 2014.app */;
+			productType = "com.apple.product-type.application";
+		};
+		4C5D18C519722C900084867C /* Arm Wrestling 2014Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4C5D18D319722C900084867C /* Build configuration list for PBXNativeTarget "Arm Wrestling 2014Tests" */;
+			buildPhases = (
+				4C5D18C219722C900084867C /* Sources */,
+				4C5D18C319722C900084867C /* Frameworks */,
+				4C5D18C419722C900084867C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4C5D18C819722C900084867C /* PBXTargetDependency */,
+			);
+			name = "Arm Wrestling 2014Tests";
+			productName = "Arm Wrestling 2014Tests";
+			productReference = 4C5D18C619722C900084867C /* Arm Wrestling 2014Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		4C5D18A819722C8F0084867C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0600;
+				ORGANIZATIONNAME = "Teriyaki Studio";
+				TargetAttributes = {
+					4C5D18AF19722C8F0084867C = {
+						CreatedOnToolsVersion = 6.0;
+					};
+					4C5D18C519722C900084867C = {
+						CreatedOnToolsVersion = 6.0;
+						TestTargetID = 4C5D18AF19722C8F0084867C;
+					};
+				};
+			};
+			buildConfigurationList = 4C5D18AB19722C8F0084867C /* Build configuration list for PBXProject "Arm Wrestling 2014" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 4C5D18A719722C8F0084867C;
+			productRefGroup = 4C5D18B119722C8F0084867C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				4C5D18AF19722C8F0084867C /* Arm Wrestling 2014 */,
+				4C5D18C519722C900084867C /* Arm Wrestling 2014Tests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		4C5D18AE19722C8F0084867C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4C5D18C119722C8F0084867C /* Images.xcassets in Resources */,
+				4C5D18B819722C8F0084867C /* GameScene.sks in Resources */,
+				4C5D18BF19722C8F0084867C /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4C5D18C419722C900084867C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		4C5D18AC19722C8F0084867C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4C5D18BA19722C8F0084867C /* GameScene.swift in Sources */,
+				4C5D18BC19722C8F0084867C /* GameViewController.swift in Sources */,
+				4C5D18B619722C8F0084867C /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4C5D18C219722C900084867C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4C5D18CD19722C900084867C /* Arm_Wrestling_2014Tests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		4C5D18C819722C900084867C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4C5D18AF19722C8F0084867C /* Arm Wrestling 2014 */;
+			targetProxy = 4C5D18C719722C900084867C /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		4C5D18BD19722C8F0084867C /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4C5D18BE19722C8F0084867C /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		4C5D18CE19722C900084867C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		4C5D18CF19722C900084867C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		4C5D18D119722C900084867C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				INFOPLIST_FILE = "Arm Wrestling 2014/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		4C5D18D219722C900084867C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				INFOPLIST_FILE = "Arm Wrestling 2014/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		4C5D18D419722C900084867C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Arm Wrestling 2014.app/Arm Wrestling 2014";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "Arm Wrestling 2014Tests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+			};
+			name = Debug;
+		};
+		4C5D18D519722C900084867C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Arm Wrestling 2014.app/Arm Wrestling 2014";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "Arm Wrestling 2014Tests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		4C5D18AB19722C8F0084867C /* Build configuration list for PBXProject "Arm Wrestling 2014" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4C5D18CE19722C900084867C /* Debug */,
+				4C5D18CF19722C900084867C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4C5D18D019722C900084867C /* Build configuration list for PBXNativeTarget "Arm Wrestling 2014" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4C5D18D119722C900084867C /* Debug */,
+				4C5D18D219722C900084867C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		4C5D18D319722C900084867C /* Build configuration list for PBXNativeTarget "Arm Wrestling 2014Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4C5D18D419722C900084867C /* Debug */,
+				4C5D18D519722C900084867C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 4C5D18A819722C8F0084867C /* Project object */;
+}
