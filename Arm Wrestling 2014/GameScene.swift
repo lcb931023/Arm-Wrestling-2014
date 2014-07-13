@@ -8,15 +8,19 @@
 
 import SpriteKit
 
+let handshake = SKSpriteNode(imageNamed: "handshake_T")
+
 class GameScene: SKScene {
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
-        let myLabel = SKLabelNode(fontNamed:"Chalkduster")
-        myLabel.text = "Hello, World!";
-        myLabel.fontSize = 65;
+        let myLabel = SKLabelNode(fontNamed:"HelveticaNeue")
+        myLabel.text = "Tap your side of screen to wrestle!";
+        myLabel.fontSize = 25;
         myLabel.position = CGPoint(x:CGRectGetMidX(self.frame), y:CGRectGetMidY(self.frame));
-        
         self.addChild(myLabel)
+        
+        handshake.position = CGPoint(x:CGRectGetMidX(self.frame), y:CGRectGetMidY(self.frame));
+        self.addChild(handshake)
     }
     
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
@@ -25,17 +29,13 @@ class GameScene: SKScene {
         for touch: AnyObject in touches {
             let location = touch.locationInNode(self)
             
-            let sprite = SKSpriteNode(imageNamed:"Spaceship")
+            if (location.y < CGRectGetMidY(self.frame))
+            {
+                handshake.position.y -= 5;
+            } else {
+                handshake.position.y += 5;
+            }
             
-            sprite.xScale = 0.5
-            sprite.yScale = 0.5
-            sprite.position = location
-            
-            let action = SKAction.rotateByAngle(CGFloat(M_PI), duration:1)
-            
-            sprite.runAction(SKAction.repeatActionForever(action))
-            
-            self.addChild(sprite)
         }
     }
    
