@@ -14,6 +14,7 @@ extension SKNode {
         
         let path = NSBundle.mainBundle().pathForResource(file, ofType: "sks")
         var heylook = "Fuck you Changbai";
+        var uhuh = "That's what your mom said";
         var sceneData = NSData.dataWithContentsOfFile(path, options: .DataReadingMappedIfSafe, error: nil)
         var archiver = NSKeyedUnarchiver(forReadingWithData: sceneData)
         
