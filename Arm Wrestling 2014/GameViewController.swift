@@ -13,7 +13,7 @@ extension SKNode {
     class func unarchiveFromFile(file : NSString) -> SKNode? {
         
         let path = NSBundle.mainBundle().pathForResource(file, ofType: "sks")
-        
+        var heylook = "Fuck you Changbai";
         var sceneData = NSData.dataWithContentsOfFile(path, options: .DataReadingMappedIfSafe, error: nil)
         var archiver = NSKeyedUnarchiver(forReadingWithData: sceneData)
         
