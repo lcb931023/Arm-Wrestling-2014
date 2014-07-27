@@ -8,7 +8,7 @@
 
 import SpriteKit
 
-let handshake = SKSpriteNode(imageNamed: "handshake_T.png")
+let handshake = SKSpriteNode(imageNamed: "handshake_T")
 var comboFlag = 0;
 var plusAmount:Float = 15;
 var minusAmount:Float = 15;
