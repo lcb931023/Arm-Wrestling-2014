@@ -12,11 +12,11 @@ let handshake = SKSpriteNode(imageNamed: "handshake_T")
 var comboFlag = 0;
 var plusAmount:Float = 15;
 var minusAmount:Float = 15;
+let myLabel = SKLabelNode(fontNamed:"HelveticaNeue");
 
 class GameScene: SKScene {
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
-        let myLabel = SKLabelNode(fontNamed:"HelveticaNeue")
         myLabel.text = "Tap your side of screen to wrestle!";
         myLabel.fontSize = 25;
         myLabel.position = CGPoint(x:CGRectGetMidX(self.frame), y:CGRectGetMidY(self.frame));
@@ -28,7 +28,7 @@ class GameScene: SKScene {
     
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
         /* Called when a touch begins */
-        
+    
         for touch: AnyObject in touches {
             let location = touch.locationInNode(self)
             
@@ -51,18 +51,13 @@ class GameScene: SKScene {
             
             
             if(handshake.position.y <= 0){
-                let endMessage = SKLabelNode(fontNamed:"HelveticaNeue")
-                endMessage.text = "Player 1 Wins!";
-                endMessage.fontSize = 25;
-                endMessage.position = CGPoint(x:CGRectGetMidX(self.frame), y:CGRectGetMidY(self.frame));
-                self.addChild(endMessage)
+                myLabel.text = "Player 1 Wins!";
             }
             else if(handshake.position.y >= CGRectGetHeight(self.frame)){
-                let endMessage = SKLabelNode(fontNamed:"HelveticaNeue")
-                endMessage.text = "Player 2 Wins!";
-                endMessage.fontSize = 25;
-                endMessage.position = CGPoint(x:CGRectGetMidX(self.frame), y:CGRectGetMidY(self.frame));
-                self.addChild(endMessage)
+                myLabel.text = "Player 2 Wins!";
+            }
+            else{
+                myLabel.text = "";
             }
             
         }
