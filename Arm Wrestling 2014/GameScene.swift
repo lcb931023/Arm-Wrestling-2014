@@ -8,7 +8,10 @@
 
 import SpriteKit
 
-let handshake = SKSpriteNode(imageNamed: "handshake_T")
+let handshake = SKSpriteNode(imageNamed: "handshake_T.png")
+var comboFlag = 0;
+var plusAmount:Float = 15;
+var minusAmount:Float = 15;
 
 class GameScene: SKScene {
     override func didMoveToView(view: SKView) {
@@ -31,9 +34,19 @@ class GameScene: SKScene {
             
             if (location.y < CGRectGetMidY(self.frame))
             {
-                handshake.position.y -= 5;
+                if (comboFlag < 0) {
+                    plusAmount = 15;
+                }
+                comboFlag = 1;
+                handshake.position.y += plusAmount;
+                plusAmount += 3;
             } else {
-                handshake.position.y += 5;
+                if (comboFlag > 0) {
+                    minusAmount = 15;
+                }
+                comboFlag = -1;
+                handshake.position.y -= minusAmount;
+                minusAmount += 3;
             }
             
         }
