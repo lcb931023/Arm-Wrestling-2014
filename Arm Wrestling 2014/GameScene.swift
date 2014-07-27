@@ -49,6 +49,22 @@ class GameScene: SKScene {
                 minusAmount += 3;
             }
             
+            
+            if(handshake.position.y <= 0){
+                let endMessage = SKLabelNode(fontNamed:"HelveticaNeue")
+                endMessage.text = "Player 1 Wins!";
+                endMessage.fontSize = 25;
+                endMessage.position = CGPoint(x:CGRectGetMidX(self.frame), y:CGRectGetMidY(self.frame));
+                self.addChild(endMessage)
+            }
+            else if(handshake.position.y >= CGRectGetHeight(self.frame)){
+                let endMessage = SKLabelNode(fontNamed:"HelveticaNeue")
+                endMessage.text = "Player 2 Wins!";
+                endMessage.fontSize = 25;
+                endMessage.position = CGPoint(x:CGRectGetMidX(self.frame), y:CGRectGetMidY(self.frame));
+                self.addChild(endMessage)
+            }
+            
         }
     }
    
