@@ -13,9 +13,13 @@ var comboFlag = 0;
 var plusAmount:Float = 15;
 var minusAmount:Float = 15;
 
+var timeInitial:CFTimeInterval = 0;
+
 class GameScene: SKScene {
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
+        // Implement timer here?
+        
         let myLabel = SKLabelNode(fontNamed:"HelveticaNeue")
         myLabel.text = "Tap your side of screen to wrestle!";
         myLabel.fontSize = 25;
@@ -31,7 +35,7 @@ class GameScene: SKScene {
         
         for touch: AnyObject in touches {
             let location = touch.locationInNode(self)
-            
+            //
             if (location.y < CGRectGetMidY(self.frame))
             {
                 if (comboFlag < 0) {
@@ -70,5 +74,10 @@ class GameScene: SKScene {
    
     override func update(currentTime: CFTimeInterval) {
         /* Called before each frame is rendered */
+        if (timeInitial==0)
+        {
+            timeInitial = currentTime;
+        }
+        println(currentTime);
     }
 }
