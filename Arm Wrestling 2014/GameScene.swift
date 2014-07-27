@@ -15,20 +15,21 @@ var minusAmount:Float = 15;
 let myLabel = SKLabelNode(fontNamed:"HelveticaNeue");
 
 var timeInitial:CFTimeInterval = 0;
+var timeSinceInit:CFTimeInterval = 0;
+var gameStarted:Bool = false;
+var gameEnded:Bool = false;
 
 class GameScene: SKScene {
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
-        // Implement timer here?
+        handshake.position = CGPoint(x:CGRectGetMidX(self.frame), y:CGRectGetMidY(self.frame));
+        self.addChild(handshake)
         
-        let myLabel = SKLabelNode(fontNamed:"HelveticaNeue")
         myLabel.text = "Tap your side of screen to wrestle!";
         myLabel.fontSize = 25;
         myLabel.position = CGPoint(x:CGRectGetMidX(self.frame), y:CGRectGetMidY(self.frame));
+        myLabel.zPosition = 100;
         self.addChild(myLabel)
-        
-        handshake.position = CGPoint(x:CGRectGetMidX(self.frame), y:CGRectGetMidY(self.frame));
-        self.addChild(handshake)
     }
     
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
@@ -36,35 +37,39 @@ class GameScene: SKScene {
     
         for touch: AnyObject in touches {
             let location = touch.locationInNode(self)
-            //
-            if (location.y < CGRectGetMidY(self.frame))
+            // Game input
+            if (gameStarted && !gameEnded)
             {
-                if (comboFlag < 0) {
-                    plusAmount = 15;
+                if (location.y < CGRectGetMidY(self.frame))
+                {
+                    if (comboFlag < 0) {
+                        plusAmount = 15;
+                    }
+                    comboFlag = 1;
+                    handshake.position.y += plusAmount;
+                    plusAmount += 3;
+                } else {
+                    if (comboFlag > 0) {
+                        minusAmount = 15;
+                    }
+                    comboFlag = -1;
+                    handshake.position.y -= minusAmount;
+                    minusAmount += 3;
                 }
-                comboFlag = 1;
-                handshake.position.y += plusAmount;
-                plusAmount += 3;
-            } else {
-                if (comboFlag > 0) {
-                    minusAmount = 15;
+                
+                // Win Detection
+                if(handshake.position.y <= 0){
+                    myLabel.text = "Player 1 Wins!";
+                    gameEnded = true;
                 }
-                comboFlag = -1;
-                handshake.position.y -= minusAmount;
-                minusAmount += 3;
+                else if(handshake.position.y >= CGRectGetHeight(self.frame)){
+                    myLabel.text = "Player 2 Wins!";
+                    gameEnded = true;
+                }
+                else{
+                    myLabel.text = "";
+                }
             }
-            
-            
-            if(handshake.position.y <= 0){
-                myLabel.text = "Player 1 Wins!";
-            }
-            else if(handshake.position.y >= CGRectGetHeight(self.frame)){
-                myLabel.text = "Player 2 Wins!";
-            }
-            else{
-                myLabel.text = "";
-            }
-            
         }
     }
    
@@ -74,6 +79,28 @@ class GameScene: SKScene {
         {
             timeInitial = currentTime;
         }
-        println(currentTime);
+        timeSinceInit = currentTime - timeInitial;
+        
+        if (!gameStarted)
+        {
+            // instruction & countdown
+            preGameCountdown();
+        }
+    }
+    
+    func preGameCountdown() {
+        if (timeSinceInit>2){
+            if (timeSinceInit<3){
+                myLabel.text = "3";
+            }else if (timeSinceInit<4){
+                myLabel.text = "2";
+            }else if (timeSinceInit<5){
+                myLabel.text = "1";
+            }else if (timeSinceInit<6){
+                myLabel.text = "START!";
+                gameStarted = true;
+            }
+            myLabel.fontSize = 65;
+        }
     }
 }
