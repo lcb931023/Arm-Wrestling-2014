@@ -2,7 +2,7 @@
 //  GameScene.swift
 //  Arm Wrestling 2014
 //
-//  Created by Changbai Li on 14-7-12.
+//  Created by Changbai Li & Danny Nguyen on 14-7-12.
 //  Copyright (c) 2014年 Teriyaki Studio. All rights reserved.
 //
 
@@ -19,6 +19,9 @@ var timeSinceInit:CFTimeInterval = 0;
 var gameStarted:Bool = false;
 var gameEnded:Bool = false;
 
+var player1 :SKSpriteNode?
+var player2 :SKSpriteNode?
+
 class GameScene: SKScene {
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
@@ -30,6 +33,33 @@ class GameScene: SKScene {
         myLabel.position = CGPoint(x:CGRectGetMidX(self.frame), y:CGRectGetMidY(self.frame));
         myLabel.zPosition = 100;
         self.addChild(myLabel)
+        
+        
+        
+        player1 = createRect(0xFC4D4D);
+        self.addChild(player1)
+        
+        
+    }
+    
+    /*------------------------------------------------------------------------------/
+      createRect: Creating Rectangles in View to portray each player
+    /-----------------------------------------------------------------------------*/
+    func createRect( hex:Int ) -> SKSpriteNode{
+        //gets color data from colorize
+        let color = colorize(hex, alpha:1.0)
+        
+        var rect = SKSpriteNode(color: color, size: CGSizeMake( CGRectGetWidth(self.frame), CGRectGetHeight(self.frame)/2) );
+        return rect;
+    }
+    
+    func colorize (hex: Int, alpha: Double = 1.0) -> UIColor {
+        //gets hex and converts to rgb values 0.0 - 1.0
+        let red = Double((hex & 0xFF0000) >> 16) / 255.0
+        let green = Double((hex & 0xFF00) >> 8) / 255.0
+        let blue = Double((hex & 0xFF)) / 255.0
+        var color: UIColor = UIColor( red: CGFloat(red), green: CGFloat(green), blue: CGFloat(blue), alpha:CGFloat(alpha) )
+        return color
     }
     
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
