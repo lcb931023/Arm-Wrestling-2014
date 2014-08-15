@@ -26,20 +26,25 @@ class GameScene: SKScene {
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
         handshake.position = CGPoint(x:CGRectGetMidX(self.frame), y:CGRectGetMidY(self.frame));
-        self.addChild(handshake)
+        //self.addChild(handshake)
         
-        myLabel.text = "Tap your side of screen to wrestle!";
-        myLabel.fontSize = 25;
-        myLabel.position = CGPoint(x:CGRectGetMidX(self.frame), y:CGRectGetMidY(self.frame));
+        myLabel.text = "Tap your side of the screen as fast as you can!";
+        myLabel.fontSize = 21;
+        myLabel.position = CGPoint(x:CGRectGetMidX(self.frame), y:CGRectGetMidY(self.frame) - CGRectGetHeight(myLabel.frame)/2);
         myLabel.zPosition = 100;
         self.addChild(myLabel)
         
         
-        
-        player1 = createRect(0xFC4D4D);
+        //top
+        player1 = createRect(0xFF5D73);
+        player1!.position = CGPointMake(CGRectGetMidX(self.frame), (CGRectGetHeight(player1!.frame)*1.5));
         self.addChild(player1)
-        
-        
+       
+        //bottom
+        player2 = createRect(0x2D99EC);
+        player2!.position = CGPointMake(CGRectGetMidX(self.frame), (CGRectGetHeight(player1!.frame)/2));
+        self.addChild(player2)
+
     }
     
     /*------------------------------------------------------------------------------/
@@ -76,24 +81,34 @@ class GameScene: SKScene {
                         plusAmount = 15;
                     }
                     comboFlag = 1;
-                    handshake.position.y += plusAmount;
+                    //handshake.position.y += plusAmount;
+                    player1!.size.height -= plusAmount;
+                    player2!.size.height += plusAmount;
+                    player1!.position.y += plusAmount/2;
+                    player2!.position.y += plusAmount/2;
                     plusAmount += 3;
                 } else {
                     if (comboFlag > 0) {
                         minusAmount = 15;
                     }
                     comboFlag = -1;
-                    handshake.position.y -= minusAmount;
+                    //handshake.position.y -= minusAmount;
+                    player1!.size.height += minusAmount;
+                    player2!.size.height -= minusAmount;
+                    player1!.position.y -= minusAmount/2;
+                    player2!.position.y -= minusAmount/2;
                     minusAmount += 3;
                 }
                 
                 // Win Detection
-                if(handshake.position.y <= 0){
+                if(player2!.position.y <= 0){
                     myLabel.text = "Player 1 Wins!";
+                    myLabel.fontSize = 30;
                     gameEnded = true;
                 }
-                else if(handshake.position.y >= CGRectGetHeight(self.frame)){
+                else if(player1!.position.y >= CGRectGetHeight(self.frame)){
                     myLabel.text = "Player 2 Wins!";
+                    myLabel.fontSize = 30;
                     gameEnded = true;
                 }
                 else{
