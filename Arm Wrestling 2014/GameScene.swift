@@ -28,6 +28,9 @@ class GameScene: SKScene {
     typealias gameOverBlock = (didWin : Bool) -> Void
     var gameOverDelegate: gameOverBlock?
 
+    var player1 :SKSpriteNode?
+    var player2 :SKSpriteNode?
+    
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
         handshake.position = CGPoint(x:CGRectGetMidX(self.frame), y:CGRectGetMidY(self.frame));
@@ -108,11 +111,13 @@ class GameScene: SKScene {
                 // Win Detection
                 if(player2!.position.y <= 0){
                     myLabel.text = "Player 1 Wins!";
+                    myLabel.fontSize = 30;
                     pOneDidWin = true;
                     gameEnded = true;
                 }
                 else if(player1!.position.y >= CGRectGetHeight(self.frame)){
                     myLabel.text = "Player 2 Wins!";
+                    myLabel.fontSize = 30;
                     pOneDidWin = false;
                     gameEnded = true;
                 }
