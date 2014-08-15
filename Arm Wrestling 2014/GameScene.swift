@@ -8,18 +8,26 @@
 
 import SpriteKit
 
-let handshake = SKSpriteNode(imageNamed: "handshake_T")
-var comboFlag = 0;
-var plusAmount:Float = 15;
-var minusAmount:Float = 15;
-let myLabel = SKLabelNode(fontNamed:"HelveticaNeue");
-
-var timeInitial:CFTimeInterval = 0;
-var timeSinceInit:CFTimeInterval = 0;
-var gameStarted:Bool = false;
-var gameEnded:Bool = false;
-
 class GameScene: SKScene {
+    
+    let handshake = SKSpriteNode(imageNamed: "handshake_T")
+    var comboFlag = 0;
+    var plusAmount:Float = 15;
+    var minusAmount:Float = 15;
+    let myLabel = SKLabelNode(fontNamed:"HelveticaNeue");
+    
+    var timeInitial:CFTimeInterval = 0;
+    var timeSinceInit:CFTimeInterval = 0;
+    let exitDuration:CFTimeInterval = 2;
+    var exitTimer:CFTimeInterval = 0;
+    var gameStarted:Bool = false;
+    var gameEnded:Bool = false;
+    var exitStarted:Bool = false;
+    var pOneDidWin:Bool = false;
+    
+    typealias gameOverBlock = (didWin : Bool) -> Void
+    var gameOverDelegate: gameOverBlock?
+
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
         handshake.position = CGPoint(x:CGRectGetMidX(self.frame), y:CGRectGetMidY(self.frame));
@@ -60,10 +68,12 @@ class GameScene: SKScene {
                 // Win Detection
                 if(handshake.position.y <= 0){
                     myLabel.text = "Player 1 Wins!";
+                    pOneDidWin = true;
                     gameEnded = true;
                 }
                 else if(handshake.position.y >= CGRectGetHeight(self.frame)){
                     myLabel.text = "Player 2 Wins!";
+                    pOneDidWin = false;
                     gameEnded = true;
                 }
                 else{
@@ -74,17 +84,30 @@ class GameScene: SKScene {
     }
    
     override func update(currentTime: CFTimeInterval) {
-        /* Called before each frame is rendered */
-        if (timeInitial==0)
+        if (!paused)
         {
-            timeInitial = currentTime;
-        }
-        timeSinceInit = currentTime - timeInitial;
-        
-        if (!gameStarted)
-        {
-            // instruction & countdown
-            preGameCountdown();
+            /* Called before each frame is rendered */
+            if (timeInitial==0)
+            {
+                timeInitial = currentTime;
+            }
+            timeSinceInit = currentTime - timeInitial;
+            
+            if (!gameStarted)
+            {
+                // instruction & countdown
+                preGameCountdown();
+            }
+            if (gameEnded)
+            {
+                // End game delay to Summary View
+                if (!exitStarted)
+                {
+                    exitStarted = true;
+                    exitTimer = currentTime;
+                }
+                delayedExit(currentTime);
+            }
         }
     }
     
@@ -101,6 +124,17 @@ class GameScene: SKScene {
                 gameStarted = true;
             }
             myLabel.fontSize = 65;
+        }
+    }
+    
+    func delayedExit(currentTime: CFTimeInterval) {
+        if ( (currentTime - exitTimer) > exitDuration)
+        {
+            if let gameOverCallback = gameOverDelegate {
+                paused = true;
+                gameOverCallback(didWin: pOneDidWin)
+            }
+            println("[GameScene] Game over")
         }
     }
 }

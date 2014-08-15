@@ -43,9 +43,21 @@ class GameViewController: UIViewController {
             scene.scaleMode = .AspectFill
             
             skView.presentScene(scene)
+            
+            scene.gameOverDelegate = {[weak self] (didWin) in
+                println("[GameViewController] Player 1 Won:\(didWin)")
+                
+                if let validSelf = self {
+                    
+                    let summaryViewController = validSelf.storyboard.instantiateViewControllerWithIdentifier("SummaryViewController") as SummaryViewController
+                    
+                    validSelf.presentViewController(summaryViewController, animated:true, completion:nil);
+
+                }
+            }
         }
     }
-
+    
     override func shouldAutorotate() -> Bool {
         return false
     }

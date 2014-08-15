@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4C2222BF198CAEFD00979DC3 /* TitleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2222BE198CAEFD00979DC3 /* TitleViewController.swift */; };
+		4C3E098D1995EA7D00573576 /* SummaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3E098C1995EA7D00573576 /* SummaryViewController.swift */; };
 		4C5D18B619722C8F0084867C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5D18B519722C8F0084867C /* AppDelegate.swift */; };
 		4C5D18B819722C8F0084867C /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 4C5D18B719722C8F0084867C /* GameScene.sks */; };
 		4C5D18BA19722C8F0084867C /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5D18B919722C8F0084867C /* GameScene.swift */; };
@@ -29,6 +30,7 @@
 
 /* Begin PBXFileReference section */
 		4C2222BE198CAEFD00979DC3 /* TitleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TitleViewController.swift; sourceTree = "<group>"; };
+		4C3E098C1995EA7D00573576 /* SummaryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SummaryViewController.swift; sourceTree = "<group>"; };
 		4C5D18B019722C8F0084867C /* Arm Wrestling 2014.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Arm Wrestling 2014.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C5D18B419722C8F0084867C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4C5D18B519722C8F0084867C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -88,6 +90,7 @@
 				4C5D18BB19722C8F0084867C /* GameViewController.swift */,
 				4C5D18BD19722C8F0084867C /* Main.storyboard */,
 				4C2222BE198CAEFD00979DC3 /* TitleViewController.swift */,
+				4C3E098C1995EA7D00573576 /* SummaryViewController.swift */,
 				4C5D18B319722C8F0084867C /* Supporting Files */,
 			);
 			path = "Arm Wrestling 2014";
@@ -231,6 +234,7 @@
 				4C2222BF198CAEFD00979DC3 /* TitleViewController.swift in Sources */,
 				4C5D18BC19722C8F0084867C /* GameViewController.swift in Sources */,
 				4C5D18B619722C8F0084867C /* AppDelegate.swift in Sources */,
+				4C3E098D1995EA7D00573576 /* SummaryViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
