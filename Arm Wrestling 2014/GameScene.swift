@@ -37,8 +37,8 @@ class GameScene: SKScene {
         //self.addChild(handshake)
         
         myLabel.text = "Tap your side of the screen as fast as you can!";
-        myLabel.fontSize = 21;
-        myLabel.position = CGPoint(x:CGRectGetMidX(self.frame), y:CGRectGetMidY(self.frame) - CGRectGetHeight(myLabel.frame)/2);
+        myLabel.fontSize = 22;
+        myLabel.position = CGPoint(x:CGRectGetMidX(self.frame), y:CGRectGetMidY(self.frame));
         myLabel.zPosition = 100;
         self.addChild(myLabel)
         
