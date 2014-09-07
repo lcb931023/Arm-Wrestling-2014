@@ -27,8 +27,11 @@ class GameScene: SKScene {
     var gameEnded:Bool = false;
     var exitStarted:Bool = false;
     var pOneDidWin:Bool = false;
-    // Exit Setups
-    typealias gameOverBlock = (didWin : Bool) -> Void
+    // Exit Setup
+    var p1_taps:Int = 0;
+    var p2_taps:Int = 0;
+    
+    typealias gameOverBlock = (didWin : Bool, p1TapCount: Int, p2TapCount: Int) -> Void
     var gameOverDelegate: gameOverBlock?
 
     
