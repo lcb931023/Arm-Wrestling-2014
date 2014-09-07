@@ -25,7 +25,10 @@ class GameScene: SKScene {
     var exitStarted:Bool = false;
     var pOneDidWin:Bool = false;
     
-    typealias gameOverBlock = (didWin : Bool) -> Void
+    var p1_taps:Int = 0;
+    var p2_taps:Int = 0;
+    
+    typealias gameOverBlock = (didWin : Bool, p1TapCount: Int, p2TapCount: Int) -> Void
     var gameOverDelegate: gameOverBlock?
 
     var player1 :SKSpriteNode?
@@ -95,6 +98,9 @@ class GameScene: SKScene {
                     player1!.position.y += plusAmount/2;
                     player2!.position.y += plusAmount/2;
                     plusAmount += 3;
+                    
+                    //increase player 2's tap count
+                    p2_taps += 1;
                 } else {
                     if (comboFlag > 0) {
                         minusAmount = 15;
@@ -106,6 +112,9 @@ class GameScene: SKScene {
                     player1!.position.y -= minusAmount/2;
                     player2!.position.y -= minusAmount/2;
                     minusAmount += 3;
+                    
+                    //increase player 1's tap count
+                    p1_taps += 1;
                 }
                 
                 // Win Detection
@@ -177,7 +186,7 @@ class GameScene: SKScene {
         {
             if let gameOverCallback = gameOverDelegate {
                 paused = true;
-                gameOverCallback(didWin: pOneDidWin)
+                gameOverCallback(didWin: pOneDidWin, p1TapCount: p1_taps, p2TapCount: p2_taps);
             }
             println("[GameScene] Game over")
         }
