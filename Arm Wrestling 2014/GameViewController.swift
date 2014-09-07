@@ -44,12 +44,17 @@ class GameViewController: UIViewController {
             
             skView.presentScene(scene)
             
-            scene.gameOverDelegate = {[weak self] (didWin) in
+            scene.gameOverDelegate = {[weak self] (didWin, p1TapCount, p2TapCount) in
                 println("[GameViewController] Player 1 Won:\(didWin)")
-                
+                println("Player 1 Taps:", p1TapCount);
+                println("Player 2 Taps:", p2TapCount);
                 if let validSelf = self {
                     
                     let summaryViewController = validSelf.storyboard.instantiateViewControllerWithIdentifier("SummaryViewController") as SummaryViewController
+                    
+                    summaryViewController.p1DidWin = didWin;
+                    summaryViewController.p1TapCount = p1TapCount;
+                    summaryViewController.p2TapCount = p2TapCount;
                     
                     validSelf.presentViewController(summaryViewController, animated:true, completion:nil);
 
