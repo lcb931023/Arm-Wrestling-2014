@@ -10,12 +10,15 @@ import SpriteKit
 
 class GameScene: SKScene {
     
+    // Elements
     let handshake = SKSpriteNode(imageNamed: "handshake_T")
+    let myLabel = SKLabelNode(fontNamed:"HelveticaNeue");
+    var player1 :SKSpriteNode?
+    var player2 :SKSpriteNode?
     var comboFlag = 0;
     var plusAmount:Float = 15;
     var minusAmount:Float = 15;
-    let myLabel = SKLabelNode(fontNamed:"HelveticaNeue");
-    
+    // Flow
     var timeInitial:CFTimeInterval = 0;
     var timeSinceInit:CFTimeInterval = 0;
     let exitDuration:CFTimeInterval = 2;
@@ -24,12 +27,11 @@ class GameScene: SKScene {
     var gameEnded:Bool = false;
     var exitStarted:Bool = false;
     var pOneDidWin:Bool = false;
-    
+    // Exit Setups
     typealias gameOverBlock = (didWin : Bool) -> Void
     var gameOverDelegate: gameOverBlock?
 
-    var player1 :SKSpriteNode?
-    var player2 :SKSpriteNode?
+    
     
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
@@ -47,7 +49,7 @@ class GameScene: SKScene {
         player1 = createRect(0xFF5D73);
         player1!.position = CGPointMake(CGRectGetMidX(self.frame), (CGRectGetHeight(player1!.frame)*1.5));
         self.addChild(player1)
-       
+        
         //bottom
         player2 = createRect(0x2D99EC);
         player2!.position = CGPointMake(CGRectGetMidX(self.frame), (CGRectGetHeight(player1!.frame)/2));
