@@ -47,6 +47,16 @@
                                 <color key="textColor" red="1" green="0.97433609050102132" blue="0.99985675049881806" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S07-xx-HP7">
+                                <rect key="frame" x="20" y="50" width="52" height="30"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
+                                <state key="normal" title="&lt; Back">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <segue destination="BV1-FR-VrT" kind="show" id="qeL-oX-5NI"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
@@ -181,5 +191,8 @@
             <point key="canvasLocation" x="189" y="5"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="qeL-oX-5NI"/>
+    </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.3869060446365763" green="0.70479959975906081" blue="1" alpha="1" colorSpace="calibratedRGB"/>
 </document>
