@@ -95,10 +95,10 @@ class GameScene: SKScene {
                     }
                     comboFlag = 1;
                     //handshake.position.y += plusAmount;
-                    player1!.size.height -= plusAmount;
-                    player2!.size.height += plusAmount;
-                    player1!.position.y += plusAmount/2;
-                    player2!.position.y += plusAmount/2;
+                    player1!.size.height -= CGFloat(plusAmount);
+                    player2!.size.height += CGFloat(plusAmount);
+                    player1!.position.y += CGFloat(plusAmount/2);
+                    player2!.position.y += CGFloat(plusAmount/2);
                     plusAmount += 3;
                     
                     //increase player 2's tap count
@@ -109,10 +109,10 @@ class GameScene: SKScene {
                     }
                     comboFlag = -1;
                     //handshake.position.y -= minusAmount;
-                    player1!.size.height += minusAmount;
-                    player2!.size.height -= minusAmount;
-                    player1!.position.y -= minusAmount/2;
-                    player2!.position.y -= minusAmount/2;
+                    player1!.size.height += CGFloat(minusAmount);
+                    player2!.size.height -= CGFloat(minusAmount);
+                    player1!.position.y -= CGFloat(minusAmount/2);
+                    player2!.position.y -= CGFloat(minusAmount/2);
                     minusAmount += 3;
                     
                     //increase player 1's tap count
