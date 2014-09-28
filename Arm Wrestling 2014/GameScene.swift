@@ -51,12 +51,12 @@ class GameScene: SKScene {
         //top
         player1 = createRect(0xFF5D73);
         player1!.position = CGPointMake(CGRectGetMidX(self.frame), (CGRectGetHeight(player1!.frame)*1.5));
-        self.addChild(player1)
+        self.addChild(player1!)
         
         //bottom
         player2 = createRect(0x2D99EC);
         player2!.position = CGPointMake(CGRectGetMidX(self.frame), (CGRectGetHeight(player1!.frame)/2));
-        self.addChild(player2)
+        self.addChild(player2!)
 
     }
     

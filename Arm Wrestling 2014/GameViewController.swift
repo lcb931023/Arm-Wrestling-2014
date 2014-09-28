@@ -15,7 +15,7 @@ extension SKNode {
         let path = NSBundle.mainBundle().pathForResource(file, ofType: "sks")
         var heylook = "Fuck you Changbai";
         var uhuh = "That's what your mom said";
-        var sceneData = NSData.dataWithContentsOfFile(path, options: .DataReadingMappedIfSafe, error: nil)
+        var sceneData = NSData.dataWithContentsOfFile(path!, options: .DataReadingMappedIfSafe, error: nil)
         var archiver = NSKeyedUnarchiver(forReadingWithData: sceneData)
         
         archiver.setClass(self.classForKeyedUnarchiver(), forClassName: "SKScene")
@@ -50,7 +50,7 @@ class GameViewController: UIViewController {
                 println("Player 2 Taps:", p2TapCount);
                 if let validSelf = self {
                     
-                    let summaryViewController = validSelf.storyboard.instantiateViewControllerWithIdentifier("SummaryViewController") as SummaryViewController
+                    let summaryViewController = validSelf.storyboard!.instantiateViewControllerWithIdentifier("SummaryViewController") as SummaryViewController
                     
                     summaryViewController.p1DidWin = didWin;
                     summaryViewController.p1TapCount = p1TapCount;
