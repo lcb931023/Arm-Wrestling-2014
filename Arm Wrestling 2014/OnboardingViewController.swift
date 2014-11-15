@@ -29,7 +29,9 @@ class OnboardingViewController: UIViewController {
         super.viewDidLoad()
         
         let scene = OnboardingScene(size: view.bounds.size)
+        
         // Configure the view.
+        
         let skView = view as SKView
             
         /* Sprite Kit applies additional optimizations to improve rendering performance */

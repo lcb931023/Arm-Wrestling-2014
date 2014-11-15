@@ -16,8 +16,10 @@ class GameViewController: UIViewController {
 
         //if let scene = GameScene.unarchiveFromFile("GameScene") as? GameScene {
             let scene = GameScene(size: view.bounds.size)
+        
             // Configure the view.
             let skView = view as SKView
+        
             //skView.showsFPS = true
             //skView.showsNodeCount = true
             
