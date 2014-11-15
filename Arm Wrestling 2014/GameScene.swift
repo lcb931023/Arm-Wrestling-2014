@@ -18,7 +18,8 @@ class GameScene: SKScene {
     var comboFlag = 0;
     var plusAmount:Float = 15;
     var minusAmount:Float = 15;
-    var inc: Float = 20;
+    var inc: Float = 0;
+    var defaultInc:Float = 35;
     // Flow
     var timeLimit:CFTimeInterval = 20;
     var timeInitial:CFTimeInterval = 0;
@@ -99,7 +100,7 @@ class GameScene: SKScene {
                     player1!.size.height += CGFloat(inc);
                     player2!.position.y += CGFloat(inc/2);
                     player1!.position.y += CGFloat(inc/2);
-                    plusAmount += inc;
+                    //plusAmount += inc;
                     
                     //increase player 2's tap count
                     p1_taps += 1;
@@ -113,7 +114,7 @@ class GameScene: SKScene {
                     player1!.size.height -= CGFloat(inc);
                     player2!.position.y -= CGFloat(inc/2);
                     player1!.position.y -= CGFloat(inc/2);
-                    minusAmount += inc;
+                    //minusAmount += inc;
                     
                     //increase player 1's tap count
                     p2_taps += 1;
@@ -126,12 +127,13 @@ class GameScene: SKScene {
                     pOneDidWin = true;
                     displayWinner(pOneDidWin);
                 }
-                // if player 2 wins
+                    // if player 2 wins
                 else if(player2!.size.height >= self.frame.height){
                     pOneDidWin = false;
                     displayWinner(pOneDidWin);
                 }
-            }
+   
+            }//end if
         }
     }
    
@@ -188,6 +190,7 @@ class GameScene: SKScene {
             }else if (timeSinceInit<7){
                 myLabel.text = "";
                 gameStarted = true;
+                inc = defaultInc;
             }
             
             myLabel.fontSize = 65;
@@ -220,10 +223,12 @@ class GameScene: SKScene {
         var intensity:Int = 1;
         switch(intensity){
             case 1:
-                inc = 60;
+                inc = 80;
                 myLabel.text = "MORE POWER!";
+                myLabel.fontSize = 40;
                 break;
             default:
+                inc = defaultInc;
                 break;
         }
     }
