@@ -18,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         // Hack solution for linker to include custom views
         // http://stackoverflow.com/questions/24983079/unknown-class-myclass-in-interface-builder-file-in-swift
-        OnboardingViewController.self;
+        TitleViewController.self;
         SummaryViewController.self;
         return true
     }

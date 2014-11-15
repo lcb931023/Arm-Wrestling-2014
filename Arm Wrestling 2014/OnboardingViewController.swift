@@ -41,6 +41,16 @@ class OnboardingViewController: UIViewController {
         scene.scaleMode = .AspectFill
             
         skView.presentScene(scene)
+        
+        scene.sequenceOverDelegate = {[weak self] () in
+            if let validSelf = self {
+                
+                let titleViewController = validSelf.storyboard!.instantiateViewControllerWithIdentifier("TitleViewController") as TitleViewController
+                
+                validSelf.presentViewController(titleViewController, animated:true, completion:nil);
+                
+            }
+        }
     }
     
     override func shouldAutorotate() -> Bool {
