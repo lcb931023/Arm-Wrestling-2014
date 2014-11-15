@@ -1,20 +1,34 @@
 //
-//  GameViewController.swift
+//  OnboardingViewController.swift
 //  Arm Wrestling 2014
 //
-//  Created by Changbai Li on 14-7-12.
+//  Created by Changbai Li on 14/11/14.
 //  Copyright (c) 2014年 Teriyaki Studio. All rights reserved.
 //
 
 import UIKit
 import SpriteKit
 
-class GameViewController: UIViewController {
+//extension SKNode {
+//    class func unarchiveFromFile(file : NSString) -> SKNode? {
+//        
+//        let path = NSBundle.mainBundle().pathForResource(file, ofType: "sks")
+//        var sceneData = NSData(contentsOfFile: path!, options: .DataReadingMappedIfSafe, error: nil)
+//        var archiver = NSKeyedUnarchiver(forReadingWithData: sceneData!)
+//        
+//        archiver.setClass(self.classForKeyedUnarchiver(), forClassName: "SKScene")
+//        let scene = archiver.decodeObjectForKey(NSKeyedArchiveRootObjectKey) as OnboardingScene
+//        archiver.finishDecoding()
+//        return scene
+//    }
+//}
 
+class OnboardingViewController: UIViewController {
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        if let scene = GameScene.unarchiveFromFile("GameScene") as? GameScene {
+        
+        if let scene = OnboardingScene.unarchiveFromFile("OnboardingScene") as? OnboardingScene {
             // Configure the view.
             let skView = self.view as SKView
             //skView.showsFPS = true
@@ -27,30 +41,13 @@ class GameViewController: UIViewController {
             scene.scaleMode = .AspectFill
             
             skView.presentScene(scene)
-            
-            scene.gameOverDelegate = {[weak self] (didWin, p1TapCount, p2TapCount) in
-                println("[GameViewController] Player 1 Won:\(didWin)")
-                println("Player 1 Taps:", p1TapCount);
-                println("Player 2 Taps:", p2TapCount);
-                if let validSelf = self {
-                    
-                    let summaryViewController = validSelf.storyboard!.instantiateViewControllerWithIdentifier("SummaryViewController") as SummaryViewController
-                    
-                    summaryViewController.p1DidWin = didWin;
-                    summaryViewController.p1TapCount = p1TapCount;
-                    summaryViewController.p2TapCount = p2TapCount;
-                    
-                    validSelf.presentViewController(summaryViewController, animated:true, completion:nil);
-
-                }
-            }
         }
     }
     
     override func shouldAutorotate() -> Bool {
         return false
     }
-
+    
     override func supportedInterfaceOrientations() -> Int {
         if UIDevice.currentDevice().userInterfaceIdiom == .Phone {
             return Int(UIInterfaceOrientationMask.AllButUpsideDown.rawValue)
@@ -58,12 +55,12 @@ class GameViewController: UIViewController {
             return Int(UIInterfaceOrientationMask.All.rawValue)
         }
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Release any cached data, images, etc that aren't in use.
     }
-
+    
     override func prefersStatusBarHidden() -> Bool {
         return true
     }
