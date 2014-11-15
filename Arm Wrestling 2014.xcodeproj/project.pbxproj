@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		3032CC451A172BD6003F30EA /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3032CC441A172BD6003F30EA /* Player.swift */; };
+		30CC445B1A17642E009ADB4A /* Player1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30CC445A1A17642E009ADB4A /* Player1.swift */; };
+		30CC445D1A17658B009ADB4A /* Player2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30CC445C1A17658B009ADB4A /* Player2.swift */; };
 		4C143DB21A16EF8E008C6D49 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C143DB11A16EF8E008C6D49 /* OnboardingViewController.swift */; };
 		4C143DB41A16F33E008C6D49 /* OnboardingScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C143DB31A16F33E008C6D49 /* OnboardingScene.swift */; };
 		4C2222BF198CAEFD00979DC3 /* TitleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2222BE198CAEFD00979DC3 /* TitleViewController.swift */; };
@@ -32,6 +34,8 @@
 
 /* Begin PBXFileReference section */
 		3032CC441A172BD6003F30EA /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		30CC445A1A17642E009ADB4A /* Player1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player1.swift; sourceTree = "<group>"; };
+		30CC445C1A17658B009ADB4A /* Player2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player2.swift; sourceTree = "<group>"; };
 		4C143DB11A16EF8E008C6D49 /* OnboardingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		4C143DB31A16F33E008C6D49 /* OnboardingScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingScene.swift; sourceTree = "<group>"; };
 		4C2222BE198CAEFD00979DC3 /* TitleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TitleViewController.swift; sourceTree = "<group>"; };
@@ -69,9 +73,6 @@
 		3032CC401A172332003F30EA /* GameScene */ = {
 			isa = PBXGroup;
 			children = (
-				4C5D18B719722C8F0084867C /* GameScene.sks */,
-				4C5D18B919722C8F0084867C /* GameScene.swift */,
-				4C5D18BB19722C8F0084867C /* GameViewController.swift */,
 			);
 			name = GameScene;
 			sourceTree = "<group>";
@@ -79,8 +80,6 @@
 		3032CC411A172344003F30EA /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
-				4C143DB11A16EF8E008C6D49 /* OnboardingViewController.swift */,
-				4C143DB31A16F33E008C6D49 /* OnboardingScene.swift */,
 			);
 			name = Onboarding;
 			sourceTree = "<group>";
@@ -89,6 +88,8 @@
 			isa = PBXGroup;
 			children = (
 				3032CC441A172BD6003F30EA /* Player.swift */,
+				30CC445A1A17642E009ADB4A /* Player1.swift */,
+				30CC445C1A17658B009ADB4A /* Player2.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -271,6 +272,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				30CC445B1A17642E009ADB4A /* Player1.swift in Sources */,
+				30CC445D1A17658B009ADB4A /* Player2.swift in Sources */,
 				4C143DB41A16F33E008C6D49 /* OnboardingScene.swift in Sources */,
 				4C5D18BA19722C8F0084867C /* GameScene.swift in Sources */,
 				4C143DB21A16EF8E008C6D49 /* OnboardingViewController.swift in Sources */,

@@ -12,12 +12,12 @@ class GameScene: SKScene {
     
     // Elements
     let myLabel = SKLabelNode(fontNamed:"Avenir Heavy");
-    var player1 :Player?
-    var player2 :Player?
+    var p1 :Player1?
+    var p2 :Player2?
     var inc: Float = 0;
     var defaultInc:Float = 35;
     // Flow
-    var timeLimit:CFTimeInterval = 20;
+    var timeLimit:CFTimeInterval = 15;
     var timeInitial:CFTimeInterval = 0;
     var timeSinceInit:CFTimeInterval = 0;
     let exitDuration:CFTimeInterval = 2;
@@ -26,6 +26,14 @@ class GameScene: SKScene {
     var gameEnded:Bool = false;
     var exitStarted:Bool = false;
     var pOneDidWin:Bool = false;
+    
+    enum Intensity{
+        case DEFAULT_INT;
+        case REVERSE_INT;
+        case VERTICAL_INT;
+    }
+    
+    var gameIntensity = Intensity.DEFAULT_INT;
     
     // Exit Setup
     typealias gameOverBlock = (didWin : Bool, p1TapCount: Int, p2TapCount: Int) -> Void
@@ -43,14 +51,14 @@ class GameScene: SKScene {
         self.addChild(myLabel)
         
         //bottom
-        player1 = Player(hex: 0x2D99EC, width: CGRectGetWidth(self.frame), height: CGRectGetHeight(self.frame)/2);
-        player1!.position = CGPointMake(CGRectGetMidX(self.frame), (CGRectGetHeight(player1!.frame)/2));
-        self.addChild(player1!)
+        p1 = Player1(hex: 0x2D99EC, width: CGRectGetWidth(self.frame), height: CGRectGetHeight(self.frame)/2);
+        p1!.position = CGPointMake(CGRectGetMidX(self.frame), (CGRectGetHeight(p1!.frame)/2));
+        self.addChild(p1!)
         
         //top
-        player2 = Player(hex: 0xFF5D73, width: CGRectGetWidth(self.frame), height: CGRectGetHeight(self.frame)/2);
-        player2!.position = CGPointMake(CGRectGetMidX(self.frame), (CGRectGetHeight(player1!.frame)*1.5));
-        self.addChild(player2!)
+        p2 = Player2(hex: 0xFF5D73, width: CGRectGetWidth(self.frame), height: CGRectGetHeight(self.frame)/2);
+        p2!.position = CGPointMake(CGRectGetMidX(self.frame), (CGRectGetHeight(p1!.frame)*1.5));
+        self.addChild(p2!)
 
     }
     
@@ -82,34 +90,27 @@ class GameScene: SKScene {
             // Game input
             if (gameStarted && !gameEnded)
             {
-                if (location.y < CGRectGetMidY(self.frame))
-                {
-                    player2!.size.height -= CGFloat(inc);
-                    player1!.size.height += CGFloat(inc);
-                    player2!.position.y += CGFloat(inc/2);
-                    player1!.position.y += CGFloat(inc/2);
-                    
+                if (location.y < CGRectGetMidY(self.frame)) {
+                    p1!.increase(inc);
+                    p2!.decrease(inc);
                     //increase player 2's tap count
-                    player1?.taps += 1;
+                    p1?.taps += 1;
                 } else {
-                    player2!.size.height += CGFloat(inc);
-                    player1!.size.height -= CGFloat(inc);
-                    player2!.position.y -= CGFloat(inc/2);
-                    player1!.position.y -= CGFloat(inc/2);
-                    
+                    p2!.increase(inc);
+                    p1!.decrease(inc);
                     //increase player 1's tap count
-                    player2?.taps += 1;
+                    p2?.taps += 1;
                 }
                 
                 //
                 // Win Detection -- case for total victory
                 // if player 1 wins
-                if(player1!.size.height >= self.frame.height){
+                if(p1!.size.height >= self.frame.height){
                     pOneDidWin = true;
                     displayWinner(pOneDidWin);
                 }
                     // if player 2 wins
-                else if(player2!.size.height >= self.frame.height){
+                else if(p2!.size.height >= self.frame.height){
                     pOneDidWin = false;
                     displayWinner(pOneDidWin);
                 }
@@ -127,7 +128,7 @@ class GameScene: SKScene {
                 timeInitial = currentTime;
             }
             timeSinceInit = currentTime - timeInitial;
-            
+
             // If game has yet to start
             if (!gameStarted)
             {
@@ -150,7 +151,8 @@ class GameScene: SKScene {
                 //
                 // while game still in session, checks time passed
                 if(timeSinceInit >= timeLimit){
-                    gameChangeCountDown();
+                    //println(timeSinceInit);
+                    intensityChangeCount();
                 }
             }
             
@@ -180,7 +182,7 @@ class GameScene: SKScene {
     
     //
     // Countdown before changing game difficulty
-    func gameChangeCountDown() {
+    func intensityChangeCount() {
             
         if (timeSinceInit < timeLimit+1){
             myLabel.text = "3";
@@ -193,7 +195,8 @@ class GameScene: SKScene {
         }else if (timeSinceInit < timeLimit+10){
             // reset
             myLabel.text = "";
-            timeSinceInit = 0.1;
+            //update timeInitial to restart interval
+            timeInitial = 0;
         }
         
     }
@@ -255,7 +258,7 @@ class GameScene: SKScene {
         {
             if let gameOverCallback = gameOverDelegate {
                 paused = true;
-                gameOverCallback(didWin: pOneDidWin, p1TapCount: player1!.taps, p2TapCount: player2!.taps);
+                gameOverCallback(didWin: pOneDidWin, p1TapCount: p1!.taps, p2TapCount: p2!.taps);
             }
             println("[GameScene] Game over");
         }

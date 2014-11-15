@@ -18,6 +18,9 @@ class Player: SKSpriteNode {
         self.size = CGSizeMake( width, height);
     }
     
+    /*------------------------------------------------------------------------------/
+       Ovverriding SKSpriteNode designated initializer -> not required
+    /-----------------------------------------------------------------------------*/
     override init(texture: SKTexture!, color:UIColor!, size:(CGSize!))
     {
         super.init(texture: texture, color: color, size: size);
@@ -35,5 +38,17 @@ class Player: SKSpriteNode {
         var color: UIColor = UIColor( red: CGFloat(red), green: CGFloat(green), blue: CGFloat(blue), alpha:CGFloat(alpha) )
         return color
     }
+    
+    //
+    // update size of rect
+    /*------------------------------------------------------------------------------/
+       increase: Increases size of rect (usually on tap) according to mode
+    /-----------------------------------------------------------------------------*/
+    func increase(inc:Float){}
+    
+    /*------------------------------------------------------------------------------/
+        decrease: Increases size of rect (usually on tap) according to mode
+    /-----------------------------------------------------------------------------*/
+    func decrease(inc:Float){}
     
 }
