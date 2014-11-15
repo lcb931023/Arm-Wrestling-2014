@@ -14,40 +14,38 @@ class GameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        //if let scene = GameScene.unarchiveFromFile("GameScene") as? GameScene {
-            let scene = GameScene(size: view.bounds.size)
+        let scene = GameScene(size: view.bounds.size)
         
-            // Configure the view.
-            let skView = view as SKView
+        // Configure the view.
+        let skView = view as SKView
         
-            //skView.showsFPS = true
-            //skView.showsNodeCount = true
-            
-            /* Sprite Kit applies additional optimizations to improve rendering performance */
-            skView.ignoresSiblingOrder = true
-            
-            /* Set the scale mode to scale to fit the window */
-            scene.scaleMode = .AspectFill
-            
-            skView.presentScene(scene)
-            
-            scene.gameOverDelegate = {[weak self] (didWin, p1TapCount, p2TapCount) in
-                println("[GameViewController] Player 1 Won:\(didWin)")
-                println("Player 1 Taps:", p1TapCount);
-                println("Player 2 Taps:", p2TapCount);
-                if let validSelf = self {
-                    
-                    let summaryViewController = validSelf.storyboard!.instantiateViewControllerWithIdentifier("SummaryViewController") as SummaryViewController
-                    
-                    summaryViewController.p1DidWin = didWin;
-                    summaryViewController.p1TapCount = p1TapCount;
-                    summaryViewController.p2TapCount = p2TapCount;
-                    
-                    validSelf.presentViewController(summaryViewController, animated:true, completion:nil);
+        //skView.showsFPS = true
+        //skView.showsNodeCount = true
+        
+        /* Sprite Kit applies additional optimizations to improve rendering performance */
+        skView.ignoresSiblingOrder = true
+        
+        /* Set the scale mode to scale to fit the window */
+        scene.scaleMode = .AspectFill
+        
+        skView.presentScene(scene)
+        
+        scene.gameOverDelegate = {[weak self] (didWin, p1TapCount, p2TapCount) in
+            println("[GameViewController] Player 1 Won:\(didWin)")
+            println("Player 1 Taps:", p1TapCount);
+            println("Player 2 Taps:", p2TapCount);
+            if let validSelf = self {
+                
+                let summaryViewController = validSelf.storyboard!.instantiateViewControllerWithIdentifier("SummaryViewController") as SummaryViewController
+                
+                summaryViewController.p1DidWin = didWin;
+                summaryViewController.p1TapCount = p1TapCount;
+                summaryViewController.p2TapCount = p2TapCount;
+                
+                validSelf.presentViewController(summaryViewController, animated:true, completion:nil);
 
-                }
             }
-        //}
+        }
     }
     
     override func shouldAutorotate() -> Bool {
