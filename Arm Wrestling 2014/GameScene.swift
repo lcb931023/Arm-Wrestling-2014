@@ -11,13 +11,9 @@ import SpriteKit
 class GameScene: SKScene {
     
     // Elements
-    let handshake = SKSpriteNode(imageNamed: "handshake_T")
     let myLabel = SKLabelNode(fontNamed:"HelveticaNeue");
     var player1 :Player?
     var player2 :Player?
-    var comboFlag = 0;
-    var plusAmount:Float = 15;
-    var minusAmount:Float = 15;
     var inc: Float = 0;
     var defaultInc:Float = 35;
     // Flow
@@ -89,30 +85,18 @@ class GameScene: SKScene {
             {
                 if (location.y < CGRectGetMidY(self.frame))
                 {
-                    if (comboFlag < 0) {
-                        plusAmount = 15;
-                    }
-                    comboFlag = 1;
-                    //handshake.position.y += plusAmount;
                     player2!.size.height -= CGFloat(inc);
                     player1!.size.height += CGFloat(inc);
                     player2!.position.y += CGFloat(inc/2);
                     player1!.position.y += CGFloat(inc/2);
-                    //plusAmount += inc;
                     
                     //increase player 2's tap count
                     player1?.taps += 1;
                 } else {
-                    if (comboFlag > 0) {
-                        minusAmount = 15;
-                    }
-                    comboFlag = -1;
-                    //handshake.position.y -= minusAmount;
                     player2!.size.height += CGFloat(inc);
                     player1!.size.height -= CGFloat(inc);
                     player2!.position.y -= CGFloat(inc/2);
                     player1!.position.y -= CGFloat(inc/2);
-                    //minusAmount += inc;
                     
                     //increase player 1's tap count
                     player2?.taps += 1;
