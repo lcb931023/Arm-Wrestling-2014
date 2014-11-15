@@ -11,7 +11,7 @@ import SpriteKit
 class GameScene: SKScene {
     
     // Elements
-    let myLabel = SKLabelNode(fontNamed:"HelveticaNeue");
+    let myLabel = SKLabelNode(fontNamed:"Avenir Heavy");
     var player1 :Player?
     var player2 :Player?
     var inc: Float = 0;
@@ -37,7 +37,6 @@ class GameScene: SKScene {
         /* Setup your scene here */
         
         myLabel.text = "GET READY!";
-        myLabel.fontName = "Avenir Heavy";
         myLabel.fontSize = 40;
         myLabel.position = CGPoint(x:CGRectGetMidX(self.frame), y:CGRectGetMidY(self.frame)-15);
         myLabel.zPosition = 100;
