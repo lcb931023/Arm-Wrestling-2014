@@ -13,8 +13,8 @@ class GameScene: SKScene {
     // Elements
     let handshake = SKSpriteNode(imageNamed: "handshake_T")
     let myLabel = SKLabelNode(fontNamed:"HelveticaNeue");
-    var player1 :SKSpriteNode?
-    var player2 :SKSpriteNode?
+    var player1 :Player?
+    var player2 :Player?
     var comboFlag = 0;
     var plusAmount:Float = 15;
     var minusAmount:Float = 15;
@@ -30,10 +30,8 @@ class GameScene: SKScene {
     var gameEnded:Bool = false;
     var exitStarted:Bool = false;
     var pOneDidWin:Bool = false;
-    // Exit Setup
-    var p1_taps:Int = 0;
-    var p2_taps:Int = 0;
     
+    // Exit Setup
     typealias gameOverBlock = (didWin : Bool, p1TapCount: Int, p2TapCount: Int) -> Void
     var gameOverDelegate: gameOverBlock?
 
@@ -41,21 +39,21 @@ class GameScene: SKScene {
     
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
-        handshake.position = CGPoint(x:CGRectGetMidX(self.frame), y:CGRectGetMidY(self.frame));
         
         myLabel.text = "GET READY!";
-        myLabel.fontSize = 25;
-        myLabel.position = CGPoint(x:CGRectGetMidX(self.frame), y:CGRectGetMidY(self.frame));
+        myLabel.fontName = "Avenir Heavy";
+        myLabel.fontSize = 40;
+        myLabel.position = CGPoint(x:CGRectGetMidX(self.frame), y:CGRectGetMidY(self.frame)-15);
         myLabel.zPosition = 100;
         self.addChild(myLabel)
         
         //bottom
-        player1 = createRect(0x2D99EC);
+        player1 = Player(hex: 0x2D99EC, width: CGRectGetWidth(self.frame), height: CGRectGetHeight(self.frame)/2);
         player1!.position = CGPointMake(CGRectGetMidX(self.frame), (CGRectGetHeight(player1!.frame)/2));
         self.addChild(player1!)
         
         //top
-        player2 = createRect(0xFF5D73);
+        player2 = Player(hex: 0xFF5D73, width: CGRectGetWidth(self.frame), height: CGRectGetHeight(self.frame)/2);
         player2!.position = CGPointMake(CGRectGetMidX(self.frame), (CGRectGetHeight(player1!.frame)*1.5));
         self.addChild(player2!)
 
@@ -103,7 +101,7 @@ class GameScene: SKScene {
                     //plusAmount += inc;
                     
                     //increase player 2's tap count
-                    p1_taps += 1;
+                    player1?.taps += 1;
                 } else {
                     if (comboFlag > 0) {
                         minusAmount = 15;
@@ -117,7 +115,7 @@ class GameScene: SKScene {
                     //minusAmount += inc;
                     
                     //increase player 1's tap count
-                    p2_taps += 1;
+                    player2?.taps += 1;
                 }
                 
                 //
@@ -179,7 +177,7 @@ class GameScene: SKScene {
     func preGameCountdown() {
         if (timeSinceInit>2){
 
-           if (timeSinceInit<3){
+            if (timeSinceInit<3){
                 myLabel.text = "3";
             }else if (timeSinceInit<4){
                 myLabel.text = "2";
@@ -193,7 +191,7 @@ class GameScene: SKScene {
                 inc = defaultInc;
             }
             
-            myLabel.fontSize = 65;
+            myLabel.fontSize = 40;
         }
     }
     
@@ -223,9 +221,13 @@ class GameScene: SKScene {
         var intensity:Int = 1;
         switch(intensity){
             case 1:
-                inc = 80;
-                myLabel.text = "MORE POWER!";
-                myLabel.fontSize = 40;
+                initMorePower();
+                break;
+            case 2:
+                initReverseReverse();
+                break;
+            case 3:
+                initVertical();
                 break;
             default:
                 inc = defaultInc;
@@ -233,18 +235,23 @@ class GameScene: SKScene {
         }
     }
     
-    
     //
-    // Deciding if a player has won
-    func calcWinner(){
-        if( p1_taps != p2_taps){
-            pOneDidWin = (p1_taps > p2_taps) ? true:false;
-            displayWinner(pOneDidWin);
-        }else {
-            displayWinner(pOneDidWin, tie: true);
-        }
-
+    /* INTENSITIES */
+    func initMorePower(){
+        inc = 70;
+        myLabel.text = "MORE POWER!";
+        myLabel.fontSize = 40;
     }
+    
+    func initReverseReverse(){
+        
+    }
+    
+    func initVertical(){
+        
+    }
+    
+
     
     //
     // Display Who Won
@@ -265,7 +272,7 @@ class GameScene: SKScene {
         {
             if let gameOverCallback = gameOverDelegate {
                 paused = true;
-                gameOverCallback(didWin: pOneDidWin, p1TapCount: p1_taps, p2TapCount: p2_taps);
+                gameOverCallback(didWin: pOneDidWin, p1TapCount: player1!.taps, p2TapCount: player2!.taps);
             }
             println("[GameScene] Game over");
         }

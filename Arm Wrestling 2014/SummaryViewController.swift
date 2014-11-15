@@ -43,7 +43,7 @@ class SummaryViewController: UIViewController {
         p1Label.textAlignment = NSTextAlignment.Left;
         p1Label.textColor = colorize(0x2D99EC);
         p1Label.font = UIFont(name: "HelveticaNeue", size: CGFloat(16));
-        p1Label.text = "P1 Taps: " + String(p1TapCount);
+        p1Label.text = "BLUE Taps: " + String(p1TapCount);
         self.view.addSubview(p1Label);
         
         //p2 tap count
@@ -52,7 +52,7 @@ class SummaryViewController: UIViewController {
         p2Label.textColor = colorize(0xFF5D73);
         //p2Label.textColor = UIColor(red:45.0,green:153.0,blue:236.0,alpha: 1.0);
         p2Label.font = UIFont(name: "HelveticaNeue", size: CGFloat(16));
-        p2Label.text = "P2 Taps: " + String(p2TapCount);
+        p2Label.text = "PINK Taps: " + String(p2TapCount);
         self.view.addSubview(p2Label);
     }
     

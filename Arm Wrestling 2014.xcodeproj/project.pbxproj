@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3032CC451A172BD6003F30EA /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3032CC441A172BD6003F30EA /* Player.swift */; };
 		4C143DB21A16EF8E008C6D49 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C143DB11A16EF8E008C6D49 /* OnboardingViewController.swift */; };
 		4C143DB41A16F33E008C6D49 /* OnboardingScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C143DB31A16F33E008C6D49 /* OnboardingScene.swift */; };
 		4C143DB61A1700A7008C6D49 /* UnarchiveFromFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C143DB51A1700A7008C6D49 /* UnarchiveFromFile.swift */; };
@@ -32,6 +33,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3032CC441A172BD6003F30EA /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		4C143DB11A16EF8E008C6D49 /* OnboardingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		4C143DB31A16F33E008C6D49 /* OnboardingScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingScene.swift; sourceTree = "<group>"; };
 		4C143DB51A1700A7008C6D49 /* UnarchiveFromFile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnarchiveFromFile.swift; sourceTree = "<group>"; };
@@ -90,6 +92,7 @@
 		3032CC421A17235F003F30EA /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				3032CC441A172BD6003F30EA /* Player.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -277,6 +280,7 @@
 				4C2222BF198CAEFD00979DC3 /* TitleViewController.swift in Sources */,
 				4C5D18BC19722C8F0084867C /* GameViewController.swift in Sources */,
 				4C5D18B619722C8F0084867C /* AppDelegate.swift in Sources */,
+				3032CC451A172BD6003F30EA /* Player.swift in Sources */,
 				4C3E098D1995EA7D00573576 /* SummaryViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
