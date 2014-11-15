@@ -64,6 +64,40 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3032CC401A172332003F30EA /* GameScene */ = {
+			isa = PBXGroup;
+			children = (
+				4C5D18B719722C8F0084867C /* GameScene.sks */,
+				4C5D18B919722C8F0084867C /* GameScene.swift */,
+				4C5D18BB19722C8F0084867C /* GameViewController.swift */,
+			);
+			name = GameScene;
+			sourceTree = "<group>";
+		};
+		3032CC411A172344003F30EA /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				4C143DB11A16EF8E008C6D49 /* OnboardingViewController.swift */,
+				4C143DB31A16F33E008C6D49 /* OnboardingScene.swift */,
+			);
+			name = Onboarding;
+			sourceTree = "<group>";
+		};
+		3032CC421A17235F003F30EA /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		3032CC431A172376003F30EA /* Summary */ = {
+			isa = PBXGroup;
+			children = (
+				4C3E098C1995EA7D00573576 /* SummaryViewController.swift */,
+			);
+			name = Summary;
+			sourceTree = "<group>";
+		};
 		4C5D18A719722C8F0084867C = {
 			isa = PBXGroup;
 			children = (
@@ -85,13 +119,16 @@
 		4C5D18B219722C8F0084867C /* Arm Wrestling 2014 */ = {
 			isa = PBXGroup;
 			children = (
+				3032CC431A172376003F30EA /* Summary */,
+				3032CC421A17235F003F30EA /* Models */,
+				3032CC411A172344003F30EA /* Onboarding */,
+				3032CC401A172332003F30EA /* GameScene */,
 				4CD7A2201984A652002B1A59 /* Images */,
 				4C5D18B519722C8F0084867C /* AppDelegate.swift */,
 				4C5D18B919722C8F0084867C /* GameScene.swift */,
 				4C5D18BB19722C8F0084867C /* GameViewController.swift */,
 				4C5D18BD19722C8F0084867C /* Main.storyboard */,
 				4C2222BE198CAEFD00979DC3 /* TitleViewController.swift */,
-				4C3E098C1995EA7D00573576 /* SummaryViewController.swift */,
 				4C5D18B319722C8F0084867C /* Supporting Files */,
 				4C143DB11A16EF8E008C6D49 /* OnboardingViewController.swift */,
 				4C143DB31A16F33E008C6D49 /* OnboardingScene.swift */,
