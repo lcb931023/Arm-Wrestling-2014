@@ -18,7 +18,7 @@ class GameScene: SKScene {
     var comboFlag = 0;
     var plusAmount:Float = 15;
     var minusAmount:Float = 15;
-    var inc: Float = 3;
+    var inc: Float = 20;
     // Flow
     var timeLimit:CFTimeInterval = 20;
     var timeInitial:CFTimeInterval = 0;
@@ -95,10 +95,10 @@ class GameScene: SKScene {
                     }
                     comboFlag = 1;
                     //handshake.position.y += plusAmount;
-                    player2!.size.height -= CGFloat(plusAmount);
-                    player1!.size.height += CGFloat(plusAmount);
-                    player2!.position.y += CGFloat(plusAmount/2);
-                    player1!.position.y += CGFloat(plusAmount/2);
+                    player2!.size.height -= CGFloat(inc);
+                    player1!.size.height += CGFloat(inc);
+                    player2!.position.y += CGFloat(inc/2);
+                    player1!.position.y += CGFloat(inc/2);
                     plusAmount += inc;
                     
                     //increase player 2's tap count
@@ -109,10 +109,10 @@ class GameScene: SKScene {
                     }
                     comboFlag = -1;
                     //handshake.position.y -= minusAmount;
-                    player2!.size.height += CGFloat(minusAmount);
-                    player1!.size.height -= CGFloat(minusAmount);
-                    player2!.position.y -= CGFloat(minusAmount/2);
-                    player1!.position.y -= CGFloat(minusAmount/2);
+                    player2!.size.height += CGFloat(inc);
+                    player1!.size.height -= CGFloat(inc);
+                    player2!.position.y -= CGFloat(inc/2);
+                    player1!.position.y -= CGFloat(inc/2);
                     minusAmount += inc;
                     
                     //increase player 1's tap count
@@ -206,6 +206,10 @@ class GameScene: SKScene {
             myLabel.text = "1";
         }else if (timeSinceInit < timeLimit+4){
             changeGameIntensity();
+        }else if (timeSinceInit < timeLimit+10){
+            // reset
+            myLabel.text = "";
+            timeSinceInit = 0.1;
         }
         
     }
@@ -216,7 +220,8 @@ class GameScene: SKScene {
         var intensity:Int = 1;
         switch(intensity){
             case 1:
-                inc = 10;
+                inc = 60;
+                myLabel.text = "MORE POWER!";
                 break;
             default:
                 break;
