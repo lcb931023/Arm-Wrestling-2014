@@ -18,7 +18,9 @@ class GameScene: SKScene {
     var comboFlag = 0;
     var plusAmount:Float = 15;
     var minusAmount:Float = 15;
+    var inc: Float = 3;
     // Flow
+    var timeLimit:CFTimeInterval = 20;
     var timeInitial:CFTimeInterval = 0;
     var timeSinceInit:CFTimeInterval = 0;
     let exitDuration:CFTimeInterval = 2;
@@ -39,7 +41,6 @@ class GameScene: SKScene {
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
         handshake.position = CGPoint(x:CGRectGetMidX(self.frame), y:CGRectGetMidY(self.frame));
-        //self.addChild(handshake)
         
         myLabel.text = "GET READY!";
         myLabel.fontSize = 25;
@@ -47,15 +48,14 @@ class GameScene: SKScene {
         myLabel.zPosition = 100;
         self.addChild(myLabel)
         
-        
-        //top
-        player1 = createRect(0xFF5D73);
-        player1!.position = CGPointMake(CGRectGetMidX(self.frame), (CGRectGetHeight(player1!.frame)*1.5));
+        //bottom
+        player1 = createRect(0x2D99EC);
+        player1!.position = CGPointMake(CGRectGetMidX(self.frame), (CGRectGetHeight(player1!.frame)/2));
         self.addChild(player1!)
         
-        //bottom
-        player2 = createRect(0x2D99EC);
-        player2!.position = CGPointMake(CGRectGetMidX(self.frame), (CGRectGetHeight(player1!.frame)/2));
+        //top
+        player2 = createRect(0xFF5D73);
+        player2!.position = CGPointMake(CGRectGetMidX(self.frame), (CGRectGetHeight(player1!.frame)*1.5));
         self.addChild(player2!)
 
     }
@@ -95,45 +95,41 @@ class GameScene: SKScene {
                     }
                     comboFlag = 1;
                     //handshake.position.y += plusAmount;
-                    player1!.size.height -= CGFloat(plusAmount);
-                    player2!.size.height += CGFloat(plusAmount);
-                    player1!.position.y += CGFloat(plusAmount/2);
+                    player2!.size.height -= CGFloat(plusAmount);
+                    player1!.size.height += CGFloat(plusAmount);
                     player2!.position.y += CGFloat(plusAmount/2);
-                    plusAmount += 3;
+                    player1!.position.y += CGFloat(plusAmount/2);
+                    plusAmount += inc;
                     
                     //increase player 2's tap count
-                    p2_taps += 1;
+                    p1_taps += 1;
                 } else {
                     if (comboFlag > 0) {
                         minusAmount = 15;
                     }
                     comboFlag = -1;
                     //handshake.position.y -= minusAmount;
-                    player1!.size.height += CGFloat(minusAmount);
-                    player2!.size.height -= CGFloat(minusAmount);
-                    player1!.position.y -= CGFloat(minusAmount/2);
+                    player2!.size.height += CGFloat(minusAmount);
+                    player1!.size.height -= CGFloat(minusAmount);
                     player2!.position.y -= CGFloat(minusAmount/2);
-                    minusAmount += 3;
+                    player1!.position.y -= CGFloat(minusAmount/2);
+                    minusAmount += inc;
                     
                     //increase player 1's tap count
-                    p1_taps += 1;
+                    p2_taps += 1;
                 }
                 
-                // Win Detection
-                if(player2!.position.y <= 0){
-                    myLabel.text = "Player 1 Wins!";
-                    myLabel.fontSize = 30;
+                //
+                // Win Detection -- case for total victory
+                // if player 1 wins
+                if(player1!.size.height >= self.frame.height){
                     pOneDidWin = true;
-                    gameEnded = true;
+                    displayWinner(pOneDidWin);
                 }
-                else if(player1!.position.y >= CGRectGetHeight(self.frame)){
-                    myLabel.text = "Player 2 Wins!";
-                    myLabel.fontSize = 30;
+                // if player 2 wins
+                else if(player2!.size.height >= self.frame.height){
                     pOneDidWin = false;
-                    gameEnded = true;
-                }
-                else{
-                    myLabel.text = "";
+                    displayWinner(pOneDidWin);
                 }
             }
         }
@@ -149,11 +145,14 @@ class GameScene: SKScene {
             }
             timeSinceInit = currentTime - timeInitial;
             
+            // If game has yet to start
             if (!gameStarted)
             {
                 // instruction & countdown
                 preGameCountdown();
             }
+            
+            // If game has ended
             if (gameEnded)
             {
                 // End game delay to Summary View
@@ -164,12 +163,21 @@ class GameScene: SKScene {
                 }
                 delayedExit(currentTime);
             }
+            else {
+                //
+                // while game still in session, checks time passed
+                if(timeSinceInit >= timeLimit){
+                    gameChangeCountDown();
+                }
+            }
+            
         }
     }
     
     func preGameCountdown() {
         if (timeSinceInit>2){
-            if (timeSinceInit<3){
+
+           if (timeSinceInit<3){
                 myLabel.text = "3";
             }else if (timeSinceInit<4){
                 myLabel.text = "2";
@@ -177,10 +185,69 @@ class GameScene: SKScene {
                 myLabel.text = "1";
             }else if (timeSinceInit<6){
                 myLabel.text = "START!";
+            }else if (timeSinceInit<7){
+                myLabel.text = "";
                 gameStarted = true;
             }
+            
             myLabel.fontSize = 65;
         }
+    }
+    
+    //
+    // Countdown before changing game difficulty
+    func gameChangeCountDown() {
+            
+        if (timeSinceInit < timeLimit+1){
+            myLabel.text = "3";
+        }else if (timeSinceInit < timeLimit+2){
+            myLabel.text = "2";
+        }else if (timeSinceInit < timeLimit+3){
+            myLabel.text = "1";
+        }else if (timeSinceInit < timeLimit+4){
+            changeGameIntensity();
+        }
+        
+    }
+    
+    //
+    // different game intensity changes
+    func changeGameIntensity(){
+        var intensity:Int = 1;
+        switch(intensity){
+            case 1:
+                inc = 10;
+                break;
+            default:
+                break;
+        }
+    }
+    
+    
+    //
+    // Deciding if a player has won
+    func calcWinner(){
+        if( p1_taps != p2_taps){
+            pOneDidWin = (p1_taps > p2_taps) ? true:false;
+            displayWinner(pOneDidWin);
+        }else {
+            displayWinner(pOneDidWin, tie: true);
+        }
+
+    }
+    
+    //
+    // Display Who Won
+    func displayWinner(pOneDidWin: Bool, tie: Bool = false){
+        gameEnded = true;
+        
+        if(pOneDidWin){
+            myLabel.text = "B L U E   W I N S !";
+        }else{
+            myLabel.text = "P I N K   W I N S !";
+        }
+        
+        myLabel.fontSize = 25;
     }
     
     func delayedExit(currentTime: CFTimeInterval) {
@@ -190,7 +257,7 @@ class GameScene: SKScene {
                 paused = true;
                 gameOverCallback(didWin: pOneDidWin, p1TapCount: p1_taps, p2TapCount: p2_taps);
             }
-            println("[GameScene] Game over")
+            println("[GameScene] Game over");
         }
     }
 }
