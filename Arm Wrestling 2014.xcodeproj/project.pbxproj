@@ -9,11 +9,9 @@
 /* Begin PBXBuildFile section */
 		4C143DB21A16EF8E008C6D49 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C143DB11A16EF8E008C6D49 /* OnboardingViewController.swift */; };
 		4C143DB41A16F33E008C6D49 /* OnboardingScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C143DB31A16F33E008C6D49 /* OnboardingScene.swift */; };
-		4C143DB61A1700A7008C6D49 /* UnarchiveFromFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C143DB51A1700A7008C6D49 /* UnarchiveFromFile.swift */; };
 		4C2222BF198CAEFD00979DC3 /* TitleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2222BE198CAEFD00979DC3 /* TitleViewController.swift */; };
 		4C3E098D1995EA7D00573576 /* SummaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3E098C1995EA7D00573576 /* SummaryViewController.swift */; };
 		4C5D18B619722C8F0084867C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5D18B519722C8F0084867C /* AppDelegate.swift */; };
-		4C5D18B819722C8F0084867C /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 4C5D18B719722C8F0084867C /* GameScene.sks */; };
 		4C5D18BA19722C8F0084867C /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5D18B919722C8F0084867C /* GameScene.swift */; };
 		4C5D18BC19722C8F0084867C /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5D18BB19722C8F0084867C /* GameViewController.swift */; };
 		4C5D18BF19722C8F0084867C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C5D18BD19722C8F0084867C /* Main.storyboard */; };
@@ -34,13 +32,11 @@
 /* Begin PBXFileReference section */
 		4C143DB11A16EF8E008C6D49 /* OnboardingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		4C143DB31A16F33E008C6D49 /* OnboardingScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingScene.swift; sourceTree = "<group>"; };
-		4C143DB51A1700A7008C6D49 /* UnarchiveFromFile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnarchiveFromFile.swift; sourceTree = "<group>"; };
 		4C2222BE198CAEFD00979DC3 /* TitleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TitleViewController.swift; sourceTree = "<group>"; };
 		4C3E098C1995EA7D00573576 /* SummaryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SummaryViewController.swift; sourceTree = "<group>"; };
 		4C5D18B019722C8F0084867C /* Arm Wrestling 2014.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Arm Wrestling 2014.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C5D18B419722C8F0084867C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4C5D18B519722C8F0084867C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		4C5D18B719722C8F0084867C /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
 		4C5D18B919722C8F0084867C /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		4C5D18BB19722C8F0084867C /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		4C5D18BE19722C8F0084867C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -91,7 +87,6 @@
 			children = (
 				4CD7A2201984A652002B1A59 /* Images */,
 				4C5D18B519722C8F0084867C /* AppDelegate.swift */,
-				4C5D18B719722C8F0084867C /* GameScene.sks */,
 				4C5D18B919722C8F0084867C /* GameScene.swift */,
 				4C5D18BB19722C8F0084867C /* GameViewController.swift */,
 				4C5D18BD19722C8F0084867C /* Main.storyboard */,
@@ -100,7 +95,6 @@
 				4C5D18B319722C8F0084867C /* Supporting Files */,
 				4C143DB11A16EF8E008C6D49 /* OnboardingViewController.swift */,
 				4C143DB31A16F33E008C6D49 /* OnboardingScene.swift */,
-				4C143DB51A1700A7008C6D49 /* UnarchiveFromFile.swift */,
 			);
 			path = "Arm Wrestling 2014";
 			sourceTree = "<group>";
@@ -218,7 +212,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4C5D18B819722C8F0084867C /* GameScene.sks in Resources */,
 				4C5D18BF19722C8F0084867C /* Main.storyboard in Resources */,
 				4CD7A2221984A652002B1A59 /* handshake_T.png in Resources */,
 			);
@@ -241,7 +234,6 @@
 				4C143DB41A16F33E008C6D49 /* OnboardingScene.swift in Sources */,
 				4C5D18BA19722C8F0084867C /* GameScene.swift in Sources */,
 				4C143DB21A16EF8E008C6D49 /* OnboardingViewController.swift in Sources */,
-				4C143DB61A1700A7008C6D49 /* UnarchiveFromFile.swift in Sources */,
 				4C2222BF198CAEFD00979DC3 /* TitleViewController.swift in Sources */,
 				4C5D18BC19722C8F0084867C /* GameViewController.swift in Sources */,
 				4C5D18B619722C8F0084867C /* AppDelegate.swift in Sources */,

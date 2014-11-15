@@ -10,11 +10,11 @@ import SpriteKit
 
 class OnboardingScene: SKScene {
 
-    //let handshake = SKSpriteNode(imageNamed: "handshake_T")
+    let handshake = SKSpriteNode(imageNamed: "handshake_T")
     
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
-      //  handshake.position = CGPoint(x:CGRectGetMidX(self.frame), y:CGRectGetMidY(self.frame));
+        handshake.position = CGPoint(x:CGRectGetMidX(self.frame), y:CGRectGetMidY(self.frame));
     }
 
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
@@ -28,7 +28,8 @@ class OnboardingScene: SKScene {
     override func update(currentTime: CFTimeInterval) {
         if (!paused)
         {
-        //    handshake.position.x += 1;
+            handshake.position.x += 1;
+            print
         }
     }
 }
