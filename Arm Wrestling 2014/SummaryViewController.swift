@@ -18,6 +18,11 @@ class SummaryViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        displayContent();
+        
+    }
+    
+    func displayContent (){
         var width = self.view.frame.size.width;
         var centerX = self.view.frame.size.width/2;
         
@@ -30,7 +35,7 @@ class SummaryViewController: UIViewController {
         else{
             winnerLabel.text = "PLAYER 2 WINS!";
         }
-       
+        
         self.view.addSubview(winnerLabel);
         
         //p1 tap count
@@ -49,9 +54,7 @@ class SummaryViewController: UIViewController {
         p2Label.font = UIFont(name: "HelveticaNeue", size: CGFloat(16));
         p2Label.text = "P2 Taps: " + String(p2TapCount);
         self.view.addSubview(p2Label);
-        
     }
-    
     
     func colorize (hex: Int, alpha: Double = 1.0) -> UIColor {
         //gets hex and converts to rgb values 0.0 - 1.0
@@ -68,9 +71,9 @@ class SummaryViewController: UIViewController {
     
     override func supportedInterfaceOrientations() -> Int {
         if UIDevice.currentDevice().userInterfaceIdiom == .Phone {
-            return Int(UIInterfaceOrientationMask.AllButUpsideDown.toRaw())
+            return Int(UIInterfaceOrientationMask.AllButUpsideDown.rawValue)
         } else {
-            return Int(UIInterfaceOrientationMask.All.toRaw())
+            return Int(UIInterfaceOrientationMask.All.rawValue)
         }
     }
     
