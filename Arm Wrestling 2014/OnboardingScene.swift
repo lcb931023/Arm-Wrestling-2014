@@ -20,6 +20,7 @@ class OnboardingScene: SKScene {
     var fSize:CGFloat = 0.0;
     var botLabel1 = GameLabel(text: "TAP", fontSize: 0, fontName: "Avenir Black");
     var botLabel2 = GameLabel(text: "HERE", fontSize: 0, fontName: "Avenir Black");
+    //var divisionLine = SKSpriteNode(imageNamed: <#String#>)
 
     // Exit Setup
     typealias sequenceOverBlock = () -> Void
@@ -262,6 +263,8 @@ class OnboardingScene: SKScene {
         // Reuse shits
         topLabel.text = "THEIR SIDE";
         topLabel.position = CGPoint(x: CGRectGetWidth(self.frame)/2, y: CGRectGetHeight(self.frame) * 3 / 4);
+        topLabel.fontSize = 30;
+        topLabel.zPosition = 10;
         
         var resetActions = SKAction.group([
             SKAction.sequence([
@@ -280,16 +283,20 @@ class OnboardingScene: SKScene {
                     self.botLabel1.runAction(SKAction.fadeAlphaTo(0.0, duration: 0.3), completion: { () -> Void in
                         self.botLabel1.text = "YOUR SIDE";
                         self.botLabel1.position = CGPoint(x: CGRectGetWidth(self.frame)/2, y: CGRectGetHeight(self.frame) / 4);
+                        self.botLabel1.fontSize = 30;
                     });
                     self.botLabel2.runAction(SKAction.fadeAlphaTo(0.0, duration: 0.3));
                 }
             ]),
         ]);
         // Fade the two side labels
-        var sideLabelActions = SKAction.group([
+        var sideGUIActions = SKAction.group([
             SKAction.sequence([
                 // Your Side first
+                SKAction.runBlock{self.botLabel1.runAction(SKAction.fadeAlphaTo(1.0, duration: 0.3))},
+                SKAction.waitForDuration(0.5),
                 // Now Their Side
+                SKAction.runBlock{self.topLabel.runAction(SKAction.fadeAlphaTo(1.0, duration: 0.3))},
             ]),
         ]);
         
@@ -297,7 +304,10 @@ class OnboardingScene: SKScene {
         // Full action sequence ***********
         var actions:SKAction = SKAction.sequence([
             SKAction.waitForDuration(0.6),
-            resetActions
+            resetActions,
+            SKAction.waitForDuration(0.3),
+            sideGUIActions,
+            SKAction.waitForDuration(0.3),
             ]);
         /* EXECUTE ACTIONS */
         self.runAction(actions, completion: { () -> Void in
