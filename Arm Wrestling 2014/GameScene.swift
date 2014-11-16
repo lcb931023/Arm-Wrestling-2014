@@ -20,7 +20,7 @@ class GameScene: SKScene {
     var inc: Float = 0;
     var defaultInc:Float = 30;
     // Flow
-    var timeLimit:CFTimeInterval = 12;
+    var timeLimit:CFTimeInterval = 7;
     var timeInitial:CFTimeInterval = 0;
     var timeSinceInit:CFTimeInterval = 0;
     let exitDuration:CFTimeInterval = 2;
@@ -84,20 +84,36 @@ class GameScene: SKScene {
             // Game input
             if (gameStarted && !gameEnded)
             {
-            
-                if (location.y < CGRectGetMidY(self.frame)) {
-                    p1!.increase(inc);
-                    p2!.decrease(inc);
-                    //increase player 2's tap count
-                    p1?.taps += 1;
-                } else {
-                    p2!.increase(inc);
-                    p1!.decrease(inc);
-                    //increase player 1's tap count
-                    p2?.taps += 1;
+                switch(currentIntensity){
+                    case .REVERSE:
+                        if (location.y > CGRectGetMidY(self.frame)) {
+                            p1!.increase(inc);
+                            p2!.decrease(inc);
+                            //increase player 2's tap count
+                            p1?.taps += 1;
+                        } else {
+                            p2!.increase(inc);
+                            p1!.decrease(inc);
+                            //increase player 1's tap count
+                            p2?.taps += 1;
+                        }
+                    break;
+                    
+                    default:
+                        if (location.y < CGRectGetMidY(self.frame)) {
+                            p1!.increase(inc);
+                            p2!.decrease(inc);
+                            //increase player 2's tap count
+                            p1?.taps += 1;
+                        } else {
+                            p2!.increase(inc);
+                            p1!.decrease(inc);
+                            //increase player 1's tap count
+                            p2?.taps += 1;
+                        }
+                        break;
                 }
                 
-                //
                 // Win Detection -- case for total victory
                 // if player 1 wins
                 if(p1!.size.height >= self.frame.height){
@@ -198,13 +214,8 @@ class GameScene: SKScene {
     // different game intensity changes
     func changeGameIntensity(){
         //change to randomw intensity
-        var num = arc4random_uniform(UInt32(Intensity.Total.rawValue))*1;
-        
-        //make sure that the intensity is not the same as current
-        while(currentIntensity.rawValue == Int(num)){
-            num = arc4random_uniform(UInt32(Intensity.Total.rawValue))*1;
-        }
-        
+        var num = arc4random()%UInt32(Intensity.Total.rawValue)+1;
+        println(num);
         switch(num){
             case 1:
                 initMorePower();
@@ -237,6 +248,8 @@ class GameScene: SKScene {
         inc += 30;
         myLabel.text = "MORE POWER!";
         myLabel.fontSize = 40;
+        
+        currentIntensity = Intensity.POWER;
     }
     
     func initReverseReverse(){
@@ -247,10 +260,13 @@ class GameScene: SKScene {
         myLabel2.position = CGPoint(x:0, y:-30);
         var rotate = SKAction.rotateByAngle(CGFloat(M_PI), duration: 0.2);
         game!.runAction(rotate);
+        
+        currentIntensity = (currentIntensity != Intensity.REVERSE) ? Intensity.REVERSE:Intensity.DEFAULT;
     }
     
     func initVertical(){
         
+        currentIntensity = Intensity.VERTICAL;
     }
     
 
