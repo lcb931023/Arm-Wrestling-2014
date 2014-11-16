@@ -23,6 +23,8 @@ class OnboardingScene: SKScene {
     var divisionLine = SKSpriteNode(imageNamed: "dotted_onboarding_line.png");
     var topLabel2 = GameLabel(text: "DON'T CROSS YOUR SIDE!", fontSize: 18, position: CGPoint(x:0, y:0), alpha:0);
     var dontCrossBox: SKSpriteNode?;
+    var fingerLeft = SKSpriteNode(imageNamed: "right_finger_onboarding.png");
+    var fingerRight = SKSpriteNode(imageNamed: "right_finger_onboarding.png");
 
     // Exit Setup
     typealias sequenceOverBlock = () -> Void
@@ -361,7 +363,18 @@ class OnboardingScene: SKScene {
         topLabel1.position = CGPoint(x: CGRectGetMidX(self.frame), y: CGRectGetMidY(self.frame)+100);
         topLabel2.position = CGPoint(x: CGRectGetMidX(self.frame), y: CGRectGetMidY(self.frame)+80);
         // New Shits
-        
+        let fingerScale = (CGRectGetWidth(self.frame) / fingerLeft.size.width) * 0.2;
+        fingerLeft.position = CGPoint(x: 100, y: 0);
+        fingerLeft.scaleAsPoint = CGPoint(x: fingerScale, y: fingerScale);
+        fingerLeft.zPosition = 10;
+        fingerLeft.alpha = 0;
+        self.addChild(fingerLeft);
+        fingerRight.position = CGPoint(x: CGRectGetWidth(self.frame)-100, y: 30);
+        fingerRight.scaleAsPoint = CGPoint(x: fingerScale, y: fingerScale);
+        fingerRight.zPosition = 10;
+        fingerRight.alpha = 0;
+        self.addChild(fingerRight);
+
         var resetActions = SKAction.group([
             SKAction.sequence([
                 // Shrink and move the player one down
@@ -383,10 +396,33 @@ class OnboardingScene: SKScene {
             ]),
         ]);
         
+        var showUIActions = SKAction.group([
+            SKAction.sequence([
+                //Raise the fucking fingers
+                SKAction.runBlock{
+                    self.fingerLeft.runAction(SKAction.fadeAlphaTo(1.0, duration: 0.2));
+                    self.fingerLeft.runAction(SKAction.moveToY(40, duration: 0.2));
+                },
+                SKAction.waitForDuration(0.2),
+                SKAction.runBlock{
+                    self.fingerRight.runAction(SKAction.fadeAlphaTo(1.0, duration: 0.2));
+                    self.fingerRight.runAction(SKAction.moveToY(70, duration: 0.2));
+                },
+                SKAction.waitForDuration(0.2),
+                SKAction.runBlock{
+                    self.topLabel1.runAction(SKAction.fadeAlphaTo(1.0, duration: 0.3));
+                    self.topLabel2.runAction(SKAction.fadeAlphaTo(1.0, duration: 0.3));
+                },
+            ]),
+        ]);
+        
         // Full action sequence ***********
         var actions:SKAction = SKAction.sequence([
             SKAction.waitForDuration(0.6),
             resetActions,
+            SKAction.waitForDuration(0.4),
+            showUIActions,
+            SKAction.waitForDuration(0.4),
             ]);
         /* EXECUTE ACTIONS */
         self.runAction(actions, completion: { () -> Void in
