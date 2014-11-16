@@ -17,7 +17,7 @@ class GameScene: SKScene {
     var p1 :Player1?
     var p2 :Player2?
     var inc: Float = 0;
-    var defaultInc:Float = 30;
+    var defaultInc:Float?;
     // Flow
     var timeLimit:CFTimeInterval = 9;
     var timeInitial:CFTimeInterval = 0;
@@ -74,7 +74,8 @@ class GameScene: SKScene {
         p2 = Player2(hex: 0xFF5D73, width: CGRectGetWidth(self.frame)*2, height: CGRectGetHeight(self.frame)/2);
         p2!.position = CGPointMake(0, (CGRectGetHeight(self.frame)/4));
         game!.addChild(p2!)
-
+        
+        defaultInc = Float(CGRectGetHeight(self.frame)/25);
     }
     
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
@@ -182,6 +183,7 @@ class GameScene: SKScene {
             if (timeInitial==0)
             {
                 timeInitial = currentTime;
+
             }
             timeSinceInit = currentTime - timeInitial;
 
@@ -229,7 +231,7 @@ class GameScene: SKScene {
             }else if (timeSinceInit<7){
                 myLabel.text = "";
                 gameStarted = true;
-                inc = defaultInc;
+                inc = defaultInc!;
             }
             
             

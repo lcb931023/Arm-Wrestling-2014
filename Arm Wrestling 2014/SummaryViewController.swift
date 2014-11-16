@@ -17,7 +17,23 @@ class SummaryViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        /*
+        let scene = SummaryScene(size: view.bounds.size)
         
+        // Configure the view.
+        let skView = view as SKView
+        
+        //skView.showsFPS = true
+        //skView.showsNodeCount = true
+        
+        /* Sprite Kit applies additional optimizations to improve rendering performance */
+        skView.ignoresSiblingOrder = true
+        
+        /* Set the scale mode to scale to fit the window */
+        scene.scaleMode = .AspectFill
+        
+        skView.presentScene(scene)
+*/
         displayContent();
         
     }

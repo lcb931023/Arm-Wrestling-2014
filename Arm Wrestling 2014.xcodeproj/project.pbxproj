@@ -46,6 +46,7 @@
 		304206971A1836D100F8EBEA /* Roboto-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 304206801A1836D100F8EBEA /* Roboto-Thin.ttf */; };
 		304206981A1836D100F8EBEA /* Roboto-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 304206811A1836D100F8EBEA /* Roboto-ThinItalic.ttf */; };
 		304206991A1836D100F8EBEA /* Roboto-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 304206811A1836D100F8EBEA /* Roboto-ThinItalic.ttf */; };
+		307F85DB1A18DC710081AC9A /* SummaryScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307F85DA1A18DC710081AC9A /* SummaryScene.swift */; };
 		30CC445B1A17642E009ADB4A /* Player1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30CC445A1A17642E009ADB4A /* Player1.swift */; };
 		30CC445D1A17658B009ADB4A /* Player2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30CC445C1A17658B009ADB4A /* Player2.swift */; };
 		4C143DB21A16EF8E008C6D49 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C143DB11A16EF8E008C6D49 /* OnboardingViewController.swift */; };
@@ -98,6 +99,7 @@
 		3042067F1A1836D100F8EBEA /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
 		304206801A1836D100F8EBEA /* Roboto-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Thin.ttf"; sourceTree = "<group>"; };
 		304206811A1836D100F8EBEA /* Roboto-ThinItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-ThinItalic.ttf"; sourceTree = "<group>"; };
+		307F85DA1A18DC710081AC9A /* SummaryScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SummaryScene.swift; sourceTree = "<group>"; };
 		30CC445A1A17642E009ADB4A /* Player1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player1.swift; sourceTree = "<group>"; };
 		30CC445C1A17658B009ADB4A /* Player2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player2.swift; sourceTree = "<group>"; };
 		4C143DB11A16EF8E008C6D49 /* OnboardingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
@@ -163,6 +165,7 @@
 			isa = PBXGroup;
 			children = (
 				4C3E098C1995EA7D00573576 /* SummaryViewController.swift */,
+				307F85DA1A18DC710081AC9A /* SummaryScene.swift */,
 			);
 			name = Summary;
 			sourceTree = "<group>";
@@ -437,6 +440,7 @@
 				3042066D1A17FA0A00F8EBEA /* SKTEffects.swift in Sources */,
 				3042066B1A17FA0A00F8EBEA /* SKNode+Extensions.swift in Sources */,
 				4C5D18BC19722C8F0084867C /* GameViewController.swift in Sources */,
+				307F85DB1A18DC710081AC9A /* SummaryScene.swift in Sources */,
 				3042066A1A17FA0A00F8EBEA /* SKColor+Extensions.swift in Sources */,
 				304206661A17FA0A00F8EBEA /* CGVector+Extensions.swift in Sources */,
 				4C5D18B619722C8F0084867C /* AppDelegate.swift in Sources */,
