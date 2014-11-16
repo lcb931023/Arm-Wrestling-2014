@@ -176,31 +176,35 @@ class OnboardingScene: SKScene {
         
         // BOTTOM PART ********
         // Tap here
-        var bottomNode = SKNode();
         fSize = 15;
         midpt = CGPointMake(CGRectGetWidth(self.frame)/2, (CGRectGetHeight(self.frame)/3.5));
-        label1 = GameLabel(text: "TAP", fontSize: fSize+30, position:midpt, fontName: "Avenir Black");
-        label2 = GameLabel(text: "HERE", fontSize: fSize, position:CGPointMake(midpt.x, (midpt.y-(fSize+20+margin)) ) );
-        bottomNode.addChild(label1);
-        bottomNode.addChild(label2);
-        bottomNode.alpha = 0;
-        bottomNode.zPosition = 2;
-        self.addChild(bottomNode);
+        var botLabel1 = GameLabel(text: "TAP", fontSize: fSize+30, position:midpt, fontName: "Avenir Black");
+        var botLabel2 = GameLabel(text: "HERE", fontSize: fSize, position:CGPointMake(midpt.x, (midpt.y-(fSize+20+margin)) ) );
+        botLabel1.alpha = 0;
+        botLabel2.alpha = 0;
+        botLabel1.zPosition = 2;
+        botLabel2.zPosition = 2;
+        
+        self.addChild(botLabel1);
+        self.addChild(botLabel2);
         
         // animation
         var scale = SKAction.scaleTo(1.5, duration: 0.3);
-        /*//
         
-        CHANGBAI LI -- GET THE "TAP HERE" TO POP UP
+        let botEffect1 = SKTScaleEffect(node: botLabel1, duration: 0.4, startScale: CGPointMake(0,0), endScale: CGPointMake(1,1));
+        let botEffect2 = SKTScaleEffect(node: botLabel2, duration: 0.4, startScale: CGPointMake(0,0), endScale: CGPointMake(1,1));
+        botEffect1.timingFunction = SKTTimingFunctionBackEaseOut;
+        botEffect2.timingFunction = SKTTimingFunctionBackEaseOut;
         
-        *///
-        let botEffect = SKTScaleEffect(node: bottomNode, duration: 0.4, startScale: CGPointMake(0,1), endScale: CGPointMake(1.5,1));
-        botEffect.timingFunction = SKTTimingFunctionBackEaseOut;
         var botActions = SKAction.group([
             //SKAction.actionWithEffect(botEffect),
             SKAction.sequence([
-                SKAction.runBlock{bottomNode.runAction(SKAction.fadeInWithDuration(0.3))},
-                SKAction.runBlock{bottomNode.runAction(SKAction.scaleTo(3, duration: 0.2))},
+                SKAction.runBlock{botLabel1.runAction(SKAction.fadeAlphaTo(1.0, duration: 0.0))},
+                SKAction.actionWithEffect(botEffect1),
+                ]),
+            SKAction.sequence([
+                SKAction.runBlock{botLabel2.runAction(SKAction.fadeAlphaTo(1.0, duration: 0.0))},
+                SKAction.actionWithEffect(botEffect2),
                 ])
             ]);
         
