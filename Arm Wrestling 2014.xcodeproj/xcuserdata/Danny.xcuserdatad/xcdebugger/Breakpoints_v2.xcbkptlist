@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Arm Wrestling 2014/GameScene.swift"
-            timestampString = "437824233.151444"
+            timestampString = "437833995.047179"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "57"
-            endingLineNumber = "57"
+            startingLineNumber = "58"
+            endingLineNumber = "58"
             landmarkName = "didMoveToView(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Arm Wrestling 2014/GameScene.swift"
-            timestampString = "437825489.534827"
+            timestampString = "437834289.376633"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "296"
-            endingLineNumber = "296"
+            startingLineNumber = "371"
+            endingLineNumber = "371"
             landmarkName = "delayedExit(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -138,11 +138,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Arm Wrestling 2014/GameScene.swift"
-            timestampString = "437825489.534827"
+            timestampString = "437833995.047179"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "220"
-            endingLineNumber = "220"
+            startingLineNumber = "265"
+            endingLineNumber = "265"
             landmarkName = "changeGameIntensity()"
             landmarkType = "5">
          </BreakpointContent>
@@ -154,11 +154,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Arm Wrestling 2014/GameScene.swift"
-            timestampString = "437824233.151444"
+            timestampString = "437833995.047179"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "52"
-            endingLineNumber = "52"
+            startingLineNumber = "53"
+            endingLineNumber = "53"
             landmarkName = "didMoveToView(_:)"
             landmarkType = "5">
          </BreakpointContent>

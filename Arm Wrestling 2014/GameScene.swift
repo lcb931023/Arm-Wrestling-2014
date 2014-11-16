@@ -16,11 +16,10 @@ class GameScene: SKScene {
     var game:SKSpriteNode?
     var p1 :Player1?
     var p2 :Player2?
-    var reversed:Bool = false;
     var inc: Float = 0;
     var defaultInc:Float = 30;
     // Flow
-    var timeLimit:CFTimeInterval = 7;
+    var timeLimit:CFTimeInterval = 9;
     var timeInitial:CFTimeInterval = 0;
     var timeSinceInit:CFTimeInterval = 0;
     let exitDuration:CFTimeInterval = 2;
@@ -37,6 +36,8 @@ class GameScene: SKScene {
         case VERTICAL;
         case Total;
     }
+    var reversed:Bool = false;
+    var vertical:Bool = false;
     
     var currentIntensity = Intensity.DEFAULT;
     
@@ -84,49 +85,93 @@ class GameScene: SKScene {
             // Game input
             if (gameStarted && !gameEnded)
             {
-                switch(currentIntensity){
-                    case .REVERSE:
-                        if (location.y > CGRectGetMidY(self.frame)) {
+                
+                if(reversed && !vertical){
+                    if (location.y > CGRectGetMidY(self.frame)) {
                             p1!.increase(inc);
                             p2!.decrease(inc);
                             //increase player 2's tap count
                             p1?.taps += 1;
-                        } else {
+                    } else {
                             p2!.increase(inc);
                             p1!.decrease(inc);
                             //increase player 1's tap count
                             p2?.taps += 1;
-                        }
-                    break;
+                    }
+                }
                     
-                    default:
-                        if (location.y < CGRectGetMidY(self.frame)) {
+                else if(!reversed && vertical){
+                    if (location.x > CGRectGetMidX(self.frame)) {
                             p1!.increase(inc);
                             p2!.decrease(inc);
                             //increase player 2's tap count
                             p1?.taps += 1;
-                        } else {
+                    } else {
                             p2!.increase(inc);
                             p1!.decrease(inc);
                             //increase player 1's tap count
                             p2?.taps += 1;
-                        }
-                        break;
+                    }
                 }
                 
-                // Win Detection -- case for total victory
-                // if player 1 wins
-                if(p1!.size.height >= self.frame.height){
-                    pOneDidWin = true;
-                    displayWinner(pOneDidWin);
+                else if(reversed && vertical){
+                    if (location.x < CGRectGetMidX(self.frame)) {
+                        p1!.increase(inc);
+                        p2!.decrease(inc);
+                        //increase player 2's tap count
+                        p1?.taps += 1;
+                    } else {
+                        p2!.increase(inc);
+                        p1!.decrease(inc);
+                        //increase player 1's tap count
+                        p2?.taps += 1;
+                    }
                 }
-                    // if player 2 wins
-                else if(p2!.size.height >= self.frame.height){
-                    pOneDidWin = false;
-                    displayWinner(pOneDidWin);
+                    
+                else{
+                    if (location.y < CGRectGetMidY(self.frame)) {
+                            p1!.increase(inc);
+                            p2!.decrease(inc);
+                            //increase player 2's tap count
+                            p1?.taps += 1;
+                    } else {
+                            p2!.increase(inc);
+                            p1!.decrease(inc);
+                            //increase player 1's tap count
+                            p2?.taps += 1;
+                    }
                 }
+                
+                checkWinner();
    
             }//end if
+        }
+    }
+    
+    // Win Detection -- case for total victory
+    func checkWinner(){
+        if(vertical){
+            // if player 1 wins
+            if(p1!.size.height >= self.frame.width){
+                pOneDidWin = true;
+                displayWinner(pOneDidWin);
+            }
+                // if player 2 wins
+            else if(p2!.size.height >= self.frame.width){
+                pOneDidWin = false;
+                displayWinner(pOneDidWin);
+            }
+        }else{
+            // if player 1 wins
+            if(p1!.size.height >= self.frame.height){
+                pOneDidWin = true;
+                displayWinner(pOneDidWin);
+            }
+                // if player 2 wins
+            else if(p2!.size.height >= self.frame.height){
+                pOneDidWin = false;
+                displayWinner(pOneDidWin);
+            }
         }
     }
    
@@ -215,7 +260,7 @@ class GameScene: SKScene {
     func changeGameIntensity(){
         //change to randomw intensity
         var num = arc4random()%UInt32(Intensity.Total.rawValue)+1;
-        println(num);
+        
         switch(num){
             case 1:
                 initMorePower();
@@ -227,6 +272,7 @@ class GameScene: SKScene {
                 initVertical();
                 break;
             default:
+                initMorePower();
                 break;
         }
         
@@ -255,18 +301,46 @@ class GameScene: SKScene {
     func initReverseReverse(){
         myLabel.text = "REVERSE";
         myLabel.position = CGPoint(x:0, y:30);
-        myLabel2.zRotation = CGFloat(M_PI);
+        myLabel2.runAction(SKAction.rotateByAngle(CGFloat(M_PI), duration: 0.01));
         myLabel2.text = "REVERSE";
         myLabel2.position = CGPoint(x:0, y:-30);
         var rotate = SKAction.rotateByAngle(CGFloat(M_PI), duration: 0.2);
         game!.runAction(rotate);
         
         currentIntensity = (currentIntensity != Intensity.REVERSE) ? Intensity.REVERSE:Intensity.DEFAULT;
+        reversed = (currentIntensity == Intensity.REVERSE) ? true:false;
     }
     
     func initVertical(){
+        myLabel.text = "OH";
+        myLabel.position = CGPoint(x:0, y:(CGRectGetHeight(self.frame)/8));
+        myLabel2.text = "NO!";
+        myLabel2.position = CGPoint(x:0, y:(CGRectGetHeight(self.frame)/8)*(-1));
+        var deg:CGFloat;
         
-        currentIntensity = Intensity.VERTICAL;
+        if(!vertical){
+            p1!.size.height = CGRectGetWidth(self.frame)/2;
+            p2!.size.height = CGRectGetWidth(self.frame)/2;
+            p1!.position = CGPointMake(0, (CGRectGetWidth(self.frame)/4*(-1)));
+            p2!.position = CGPointMake(0, (CGRectGetWidth(self.frame)/4));
+            currentIntensity = Intensity.VERTICAL;
+            vertical = true;
+            deg = CGFloat(M_PI/2);
+            myLabel.zRotation = CGFloat(M_PI/2)*(-1);
+            myLabel2.zRotation = CGFloat(M_PI/2)*(-1);
+        }else {
+            p1!.size.height = CGRectGetHeight(self.frame)/2;
+            p2!.size.height = CGRectGetHeight(self.frame)/2;
+            p1!.position = CGPointMake(0, (CGRectGetHeight(self.frame)/4*(-1)));
+            p2!.position = CGPointMake(0, (CGRectGetHeight(self.frame)/4));
+            currentIntensity = Intensity.DEFAULT;
+            vertical = false;
+            deg = CGFloat(M_PI/2)*(-1);
+            myLabel.zRotation = CGFloat(0);
+            myLabel2.zRotation = CGFloat(0);
+        }
+        var rotate = SKAction.rotateByAngle(deg, duration: 0.2);
+        game!.runAction(rotate);
     }
     
 
