@@ -62,26 +62,6 @@ class GameScene: SKScene {
 
     }
     
-    /*------------------------------------------------------------------------------/
-      createRect: Creating Rectangles in View to portray each player
-    /-----------------------------------------------------------------------------*/
-    func createRect( hex:Int ) -> SKSpriteNode{
-        //gets color data from colorize
-        let color = colorize(hex, alpha:1.0)
-        
-        var rect = SKSpriteNode(color: color, size: CGSizeMake( CGRectGetWidth(self.frame), CGRectGetHeight(self.frame)/2) );
-        return rect;
-    }
-    
-    func colorize (hex: Int, alpha: Double = 1.0) -> UIColor {
-        //gets hex and converts to rgb values 0.0 - 1.0
-        let red = Double((hex & 0xFF0000) >> 16) / 255.0
-        let green = Double((hex & 0xFF00) >> 8) / 255.0
-        let blue = Double((hex & 0xFF)) / 255.0
-        var color: UIColor = UIColor( red: CGFloat(red), green: CGFloat(green), blue: CGFloat(blue), alpha:CGFloat(alpha) )
-        return color
-    }
-    
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
         /* Called when a touch begins */
     
@@ -224,7 +204,7 @@ class GameScene: SKScene {
     //
     /* INTENSITIES */
     func initMorePower(){
-        inc = 70;
+        inc = 75;
         myLabel.text = "MORE POWER!";
         myLabel.fontSize = 40;
     }

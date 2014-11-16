@@ -42,6 +42,7 @@ class OnboardingViewController: UIViewController {
             
         skView.presentScene(scene)
         
+        // Delegate
         scene.sequenceOverDelegate = {[weak self] () in
             if let validSelf = self {
                 
