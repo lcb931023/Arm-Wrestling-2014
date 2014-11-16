@@ -9,7 +9,7 @@
 import SpriteKit
 
 class OnboardingScene: SKScene {
-
+    
     // Elements
     var topNode:SKNode?, botNode:SKNode?, midNode:SKNode?;
     var p1 :Player?
@@ -65,12 +65,12 @@ class OnboardingScene: SKScene {
                 
                 // Finish detection
                 if(p1!.size.height >= self.frame.height){
-                        stateEnded = true;
+                    stateEnded = true;
                 }
             }//end if
         }
     }
-
+    
     override func update(currentTime: CFTimeInterval) {
         if (!paused)
         {
@@ -86,30 +86,30 @@ class OnboardingScene: SKScene {
     
     //
     /*------------------------------------------------------------------------------/
-        updateState: updates current Sate of onboarding screen
+    updateState: updates current Sate of onboarding screen
     /-----------------------------------------------------------------------------*/
     func updateState(){
         //moves to next state
         switch(currentState){
-            case State.INITIAL:
-                initPhase1();
-                break;
-            case State.PHASE_1:
-                break;
-            case State.PHASE_2:
-                break;
-            case State.PHASE_3:
-                break;
-            default:
-                break;
+        case State.INITIAL:
+            initPhase1();
+            break;
+        case State.PHASE_1:
+            break;
+        case State.PHASE_2:
+            break;
+        case State.PHASE_3:
+            break;
+        default:
+            break;
         }
     }
     
     //
-    // PHASES 
+    // PHASES
     
     /*------------------------------------------------------------------------------/
-        PHASE 1: User is prompted to tap on his side until his side wins
+    PHASE 1: User is prompted to tap on his side until his side wins
     /-----------------------------------------------------------------------------*/
     func initPhase1(){
         //point used for labels
@@ -153,18 +153,18 @@ class OnboardingScene: SKScene {
         
         // title node animation setup
         let titleEffect = SKTMoveEffect(node: titleNode,
-                                        duration: 0.4,
-                                        startPosition: titleNode.position,
-                                        endPosition: CGPointMake(titleNode.position.x, titleNode.position.y-gap)
-                                       );
+            duration: 0.4,
+            startPosition: titleNode.position,
+            endPosition: CGPointMake(titleNode.position.x, titleNode.position.y-gap)
+        );
         titleEffect.timingFunction = SKTTimingFunctionCircularEaseOut;
         //action var
         var titleActions = SKAction.group([
-                                SKAction.actionWithEffect(titleEffect),
-                                SKAction.runBlock{
-                                    titleNode.runAction(SKAction.fadeInWithDuration(0.3));
-                                }
-                              ]);
+            SKAction.actionWithEffect(titleEffect),
+            SKAction.runBlock{
+                titleNode.runAction(SKAction.fadeInWithDuration(0.3));
+            }
+            ]);
         
         
         
@@ -175,7 +175,7 @@ class OnboardingScene: SKScene {
         
         
         // BOTTOM PART ********
-        // Tap here 
+        // Tap here
         var bottomNode = SKNode();
         fSize = 15;
         midpt = CGPointMake(CGRectGetWidth(self.frame)/2, (CGRectGetHeight(self.frame)/3.5));
@@ -190,32 +190,32 @@ class OnboardingScene: SKScene {
         // animation
         var scale = SKAction.scaleTo(1.5, duration: 0.3);
         /*//
-
-            CHANGBAI LI -- GET THE "TAP HERE" TO POP UP
-
+        
+        CHANGBAI LI -- GET THE "TAP HERE" TO POP UP
+        
         *///
         let botEffect = SKTScaleEffect(node: bottomNode, duration: 0.4, startScale: CGPointMake(0,1), endScale: CGPointMake(1.5,1));
         botEffect.timingFunction = SKTTimingFunctionBackEaseOut;
         var botActions = SKAction.group([
-                                SKAction.actionWithEffect(botEffect),
-                                SKAction.sequence([
-                                    SKAction.runBlock{bottomNode.runAction(SKAction.fadeInWithDuration(0.3))},
-                                    SKAction.runBlock{bottomNode.runAction(SKAction.scaleTo(1, duration: 0.2))},
-                                ])
-                           ]);
+            //SKAction.actionWithEffect(botEffect),
+            SKAction.sequence([
+                SKAction.runBlock{bottomNode.runAction(SKAction.fadeInWithDuration(0.3))},
+                SKAction.runBlock{bottomNode.runAction(SKAction.scaleTo(3, duration: 0.2))},
+                ])
+            ]);
         
         
         //
         // Full action sequence ***********
         var actions:SKAction = SKAction.sequence([
-                                                    SKAction.waitForDuration(0.3),
-                                                    changeY,
-                                                    SKAction.waitForDuration(0.5),
-                                                    topLabelActions,
-                                                    titleActions,
-                                                    SKAction.waitForDuration(0.25),
-                                                    botActions
-                                                ]);
+            SKAction.waitForDuration(0.6),
+            changeY,
+            SKAction.waitForDuration(0.5),
+            topLabelActions,
+            titleActions,
+            SKAction.waitForDuration(0.25),
+            botActions
+            ]);
         
         
         

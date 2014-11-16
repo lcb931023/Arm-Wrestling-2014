@@ -9,7 +9,7 @@
     {
       "size" : "29x29",
       "idiom" : "iphone",
-      "filename" : "Icon-Small@2x.png",
+      "filename" : "Icon-Small@2x-1.png",
       "scale" : "2x"
     },
     {
@@ -39,7 +39,7 @@
     {
       "size" : "57x57",
       "idiom" : "iphone",
-      "filename" : "Icon@2x.png",
+      "filename" : "Icon@2x-1.png",
       "scale" : "2x"
     },
     {
@@ -63,13 +63,13 @@
     {
       "size" : "29x29",
       "idiom" : "ipad",
-      "filename" : "Icon-Small@2x-1.png",
+      "filename" : "Icon-Small@2x.png",
       "scale" : "2x"
     },
     {
       "size" : "40x40",
       "idiom" : "ipad",
-      "filename" : "Icon-Small-40-1.png",
+      "filename" : "Icon-Small-40.png",
       "scale" : "1x"
     },
     {
@@ -117,8 +117,27 @@
     {
       "size" : "120x120",
       "idiom" : "car",
-      "filename" : "Icon-60@2x-1.png",
+      "filename" : "Icon-Small-40@3x-1.png",
       "scale" : "1x"
+    },
+    {
+      "size" : "512x512",
+      "idiom" : "mac",
+      "filename" : "Icon-512.png",
+      "scale" : "1x"
+    },
+    {
+      "size" : "512x512",
+      "idiom" : "mac",
+      "filename" : "iTunesArtwork@2x.png",
+      "scale" : "2x"
+    },
+    {
+      "size" : "72x72",
+      "idiom" : "ipad",
+      "filename" : "Icon@2x.png",
+      "unassigned" : true,
+      "scale" : "2x"
     }
   ],
   "info" : {
