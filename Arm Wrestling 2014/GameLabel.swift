@@ -10,7 +10,7 @@ import SpriteKit
 
 class GameLabel: SKLabelNode {
     
-    init (text:String, fontSize:CGFloat, position:CGPoint = CGPointMake(0,0), alpha:CGFloat = 1,fontName:String = "Avenir Heavy"){
+    init (text:String, fontSize:CGFloat, position:CGPoint = CGPointMake(0,0), alpha:CGFloat = 1,fontName:String = "Roboto-Black"){
         super.init();
         self.fontName = fontName;
         self.text = text;
