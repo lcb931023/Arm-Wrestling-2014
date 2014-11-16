@@ -67,7 +67,7 @@
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="BV1-FR-VrT" kind="show" id="qeL-oX-5NI"/>
+                                    <segue destination="AEx-dr-iwQ" kind="show" id="1D4-58-Bqb"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -110,9 +110,6 @@
                                 <state key="normal" title="&lt; Back">
                                     <color key="titleColor" red="1" green="0.45967985287350288" blue="0.53810359282752374" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
-                                <connections>
-                                    <segue destination="AEx-dr-iwQ" kind="show" id="NfQ-de-BYE"/>
-                                </connections>
                             </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Once the game begins, tap your side of the screen as fast as you can." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="233" translatesAutoresizingMaskIntoConstraints="NO" id="gmg-N4-lo3">
                                 <rect key="frame" x="43" y="121" width="233" height="61"/>
@@ -184,7 +181,8 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lgB-21-8eE">
                                 <rect key="frame" x="37" y="175" width="300" height="60"/>
                                 <fontDescription key="fontDescription" name="Roboto-Black" family="Roboto" pointSize="33"/>
-                                <state key="normal" title="Play">
+                                <state key="normal" title="VERSUS">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -193,16 +191,17 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dau-DV-w5r">
                                 <rect key="frame" x="37" y="269" width="300" height="71"/>
-                                <fontDescription key="fontDescription" name="Roboto-Black" family="Roboto" pointSize="32"/>
-                                <state key="normal" title="Help">
+                                <fontDescription key="fontDescription" name="Roboto-Black" family="Roboto" pointSize="27"/>
+                                <state key="normal" title="HELP">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="Ps9-0j-JWi" kind="show" id="DTY-zW-jZh"/>
+                                    <segue destination="KYN-dc-hMC" kind="show" id="tT6-bl-CZy"/>
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.17647058823529413" green="0.59999999999999998" blue="0.92549019607843142" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <keyCommands/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
@@ -233,8 +232,5 @@
             <point key="canvasLocation" x="-364.5" y="4.5"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="VZa-qu-Mab"/>
-    </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.3869060446365763" green="0.70479959975906081" blue="1" alpha="1" colorSpace="calibratedRGB"/>
 </document>
