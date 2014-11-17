@@ -15,16 +15,16 @@ class OnboardingScene: SKScene {
     var p2 :Player?
     var inc: Float = 35;
     var gap:CGFloat = 50; //point used for labels
-    var topLabel1 = GameLabel(text: "WELCOME TO", fontSize: 18, position: CGPoint(x:0, y:0), alpha:0);
-    var titleNode = SKNode();
     var fSize:CGFloat = 0.0;
-    var botLabel1 = GameLabel(text: "TAP", fontSize: 0, fontName: "Avenir Black");
-    var botLabel2 = GameLabel(text: "HERE", fontSize: 0, fontName: "Avenir Black");
-    var divisionLine = SKSpriteNode(imageNamed: "dotted_onboarding_line.png");
-    var topLabel2 = GameLabel(text: "DON'T CROSS YOUR SIDE!", fontSize: 18, position: CGPoint(x:0, y:0), alpha:0);
+    var titleNode:SKNode?;
+    var topLabel1:GameLabel?;
+    var topLabel2:GameLabel?;
+    var botLabel1:GameLabel?;
+    var botLabel2:GameLabel?;
+    var divisionLine:SKSpriteNode?;
     var dontCrossBox: SKSpriteNode?;
-    var fingerLeft = SKSpriteNode(imageNamed: "right_finger_onboarding.png");
-    var fingerRight = SKSpriteNode(imageNamed: "right_finger_onboarding.png");
+    var fingerLeft:SKSpriteNode?;
+    var fingerRight:SKSpriteNode?;
 
     // Exit Setup
     typealias sequenceOverBlock = () -> Void
@@ -63,6 +63,14 @@ class OnboardingScene: SKScene {
         self.addChild(p1!);
         
         // ALL the elements
+        titleNode = SKNode();
+        topLabel1 = GameLabel(text: "WELCOME TO", fontSize: 18, position: CGPoint(x:0, y:0), alpha:0);
+        botLabel1 = GameLabel(text: "TAP", fontSize: 0, fontName: "Avenir Black");
+        botLabel2 = GameLabel(text: "HERE", fontSize: 0, fontName: "Avenir Black");
+        divisionLine = SKSpriteNode(imageNamed: "dotted_onboarding_line.png");
+        topLabel2 = GameLabel(text: "DON'T CROSS YOUR SIDE!", fontSize: 18, position: CGPoint(x:0, y:0), alpha:0);
+        fingerLeft = SKSpriteNode(imageNamed: "right_finger_onboarding.png");
+        fingerRight = SKSpriteNode(imageNamed: "right_finger_onboarding.png");
         
         // Kickstart!
         updateState(); // -> initPhase1()
@@ -146,21 +154,21 @@ class OnboardingScene: SKScene {
         var midpt = CGPointMake(CGRectGetWidth(self.frame)/2, CGRectGetHeight(self.frame)-(CGRectGetHeight(self.frame)/8)+gap);
         
         // WELCOME TO *******
-        topLabel1.position = midpt;
-        self.addChild(topLabel1);
+        topLabel1!.position = midpt;
+        self.addChild(topLabel1!);
         
         // topLabel1 animation setup
-        let topEffect = SKTMoveEffect(node: topLabel1,
+        let topEffect = SKTMoveEffect(node: topLabel1!,
             duration: 0.4,
-            startPosition: topLabel1.position,
-            endPosition: CGPointMake(topLabel1.position.x, topLabel1.position.y-gap)
+            startPosition: topLabel1!.position,
+            endPosition: CGPointMake(topLabel1!.position.x, topLabel1!.position.y-gap)
         );
         topEffect.timingFunction = SKTTimingFunctionCircularEaseOut;
         //action var
         var topLabel1Actions = SKAction.group([
             SKAction.actionWithEffect(topEffect),
             SKAction.runBlock{
-                self.topLabel1.runAction(SKAction.fadeInWithDuration(0.3));
+                self.topLabel1!.runAction(SKAction.fadeInWithDuration(0.3));
             }
             ]);
         
@@ -173,24 +181,24 @@ class OnboardingScene: SKScene {
         var label2 = GameLabel(text:"OF", fontSize: fSize, position:CGPointMake(midpt.x, (midpt.y-(distance+fSize+margin))), fontName: "Avenir Black");
         var label3 = GameLabel(text:"WAR", fontSize: fSize, position:CGPointMake(midpt.x, (midpt.y-(distance+fSize*2+margin))), fontName: "Avenir Black");
         
-        titleNode.addChild(label1);
-        titleNode.addChild(label2);
-        titleNode.addChild(label3);
-        titleNode.alpha = 0;
-        self.addChild(titleNode);
+        titleNode!.addChild(label1);
+        titleNode!.addChild(label2);
+        titleNode!.addChild(label3);
+        titleNode!.alpha = 0;
+        self.addChild(titleNode!);
         
         // title node animation setup
-        let titleEffect = SKTMoveEffect(node: titleNode,
+        let titleEffect = SKTMoveEffect(node: titleNode!,
             duration: 0.4,
-            startPosition: titleNode.position,
-            endPosition: CGPointMake(titleNode.position.x, titleNode.position.y-gap)
+            startPosition: titleNode!.position,
+            endPosition: CGPointMake(titleNode!.position.x, titleNode!.position.y-gap)
         );
         titleEffect.timingFunction = SKTTimingFunctionCircularEaseOut;
         //action var
         var titleActions = SKAction.group([
             SKAction.actionWithEffect(titleEffect),
             SKAction.runBlock{
-                self.titleNode.runAction(SKAction.fadeInWithDuration(0.3));
+                self.titleNode!.runAction(SKAction.fadeInWithDuration(0.3));
             }
             ]);
         
@@ -204,33 +212,33 @@ class OnboardingScene: SKScene {
         // Tap here
         fSize = 15;
         midpt = CGPointMake(CGRectGetWidth(self.frame)/2, (CGRectGetHeight(self.frame)/3.5));
-        botLabel1.fontSize = fSize+30;
-        botLabel2.fontSize = fSize;
-        botLabel1.position = midpt;
-        botLabel2.position = CGPointMake(midpt.x, (midpt.y-(fSize+20+margin)) );
-        botLabel1.alpha = 0;
-        botLabel2.alpha = 0;
-        botLabel1.zPosition = 2;
-        botLabel2.zPosition = 2;
+        botLabel1!.fontSize = fSize+30;
+        botLabel2!.fontSize = fSize;
+        botLabel1!.position = midpt;
+        botLabel2!.position = CGPointMake(midpt.x, (midpt.y-(fSize+20+margin)) );
+        botLabel1!.alpha = 0;
+        botLabel2!.alpha = 0;
+        botLabel1!.zPosition = 2;
+        botLabel2!.zPosition = 2;
         
-        self.addChild(botLabel1);
-        self.addChild(botLabel2);
+        self.addChild(botLabel1!);
+        self.addChild(botLabel2!);
         
         // animation
         
-        let botEffect1 = SKTScaleEffect(node: botLabel1, duration: 0.4, startScale: CGPointMake(0,0), endScale: CGPointMake(1,1));
-        let botEffect2 = SKTScaleEffect(node: botLabel2, duration: 0.4, startScale: CGPointMake(0,0), endScale: CGPointMake(1,1));
+        let botEffect1 = SKTScaleEffect(node: botLabel1!, duration: 0.4, startScale: CGPointMake(0,0), endScale: CGPointMake(1,1));
+        let botEffect2 = SKTScaleEffect(node: botLabel2!, duration: 0.4, startScale: CGPointMake(0,0), endScale: CGPointMake(1,1));
         botEffect1.timingFunction = SKTTimingFunctionBackEaseOut;
         botEffect2.timingFunction = SKTTimingFunctionBackEaseOut;
         
         var botActions = SKAction.group([
             //SKAction.actionWithEffect(botEffect),
             SKAction.sequence([
-                SKAction.runBlock{self.botLabel1.runAction(SKAction.fadeAlphaTo(1.0, duration: 0.0))},
+                SKAction.runBlock{self.botLabel1!.runAction(SKAction.fadeAlphaTo(1.0, duration: 0.0))},
                 SKAction.actionWithEffect(botEffect1),
                 ]),
             SKAction.sequence([
-                SKAction.runBlock{self.botLabel2.runAction(SKAction.fadeAlphaTo(1.0, duration: 0.0))},
+                SKAction.runBlock{self.botLabel2!.runAction(SKAction.fadeAlphaTo(1.0, duration: 0.0))},
                 SKAction.actionWithEffect(botEffect2),
                 ])
             ]);
@@ -262,27 +270,27 @@ class OnboardingScene: SKScene {
         println("initPhase2");
         // Reconfigure things from Phase 1
         // Hide shits
-        topLabel1.alpha = 0;
-        titleNode.alpha = 0;
+        topLabel1!.alpha = 0;
+        titleNode!.alpha = 0;
         // Reuse shits
-        topLabel1.text = "THEIR SIDE";
-        topLabel1.position = CGPoint(x: CGRectGetWidth(self.frame)/2, y: CGRectGetHeight(self.frame) * 3 / 4);
-        topLabel1.fontSize = 30;
-        topLabel1.zPosition = 0;
+        topLabel1!.text = "THEIR SIDE";
+        topLabel1!.position = CGPoint(x: CGRectGetWidth(self.frame)/2, y: CGRectGetHeight(self.frame) * 3 / 4);
+        topLabel1!.fontSize = 30;
+        topLabel1!.zPosition = 0;
         // New Shits
-        divisionLine.position = CGPoint(x: CGRectGetMidX(self.frame), y: CGRectGetMidY(self.frame));
-        let lineScale = CGRectGetWidth(self.frame) / divisionLine.size.width;
-        divisionLine.scaleAsPoint = CGPoint(x: lineScale, y: lineScale);
-        divisionLine.zPosition = 10;
-        divisionLine.alpha = 0;
-        self.addChild(divisionLine);
+        divisionLine!.position = CGPoint(x: CGRectGetMidX(self.frame), y: CGRectGetMidY(self.frame));
+        let lineScale = CGRectGetWidth(self.frame) / divisionLine!.size.width;
+        divisionLine!.scaleAsPoint = CGPoint(x: lineScale, y: lineScale);
+        divisionLine!.zPosition = 10;
+        divisionLine!.alpha = 0;
+        self.addChild(divisionLine!);
         dontCrossBox = SKSpriteNode(color: colorize(0x2D99EC, alpha: 1.0), size: CGSizeMake( CGRectGetWidth(self.frame), CGRectGetHeight(self.frame)*1/8) );
         dontCrossBox!.position = CGPoint(x: CGRectGetMidX(self.frame), y: (CGRectGetHeight(self.frame)*9/16) );
         dontCrossBox!.alpha = 0.0;
         self.addChild(dontCrossBox!);
-        topLabel2.position = CGPoint(x: CGRectGetMidX(self.frame), y: (CGRectGetHeight(self.frame)*9/16) );
-        self.addChild(topLabel2);
-        //topLabel2.zPosition = 10;
+        topLabel2!.position = CGPoint(x: CGRectGetMidX(self.frame), y: (CGRectGetHeight(self.frame)*9/16) );
+        self.addChild(topLabel2!);
+        //topLabel2!.zPosition = 10;
 
         
         var resetActions = SKAction.group([
@@ -299,16 +307,16 @@ class OnboardingScene: SKScene {
                 },
                 SKAction.waitForDuration(0.35),
                 // Ask it comes down near the end, show line
-                SKAction.runBlock{self.divisionLine.runAction(SKAction.fadeAlphaTo(1.0, duration: 0.3))},
+                SKAction.runBlock{self.divisionLine!.runAction(SKAction.fadeAlphaTo(1.0, duration: 0.3))},
                 // Fade out dat botlabels
                 SKAction.runBlock{
-                    self.botLabel1.runAction(SKAction.fadeAlphaTo(0.0, duration: 0.3), completion: { () -> Void in
+                    self.botLabel1!.runAction(SKAction.fadeAlphaTo(0.0, duration: 0.3), completion: { () -> Void in
                         // Reuse and prepare
-                        self.botLabel1.text = "YOUR SIDE";
-                        self.botLabel1.position = CGPoint(x: CGRectGetWidth(self.frame)/2, y: CGRectGetHeight(self.frame) / 4);
-                        self.botLabel1.fontSize = 30;
+                        self.botLabel1!.text = "YOUR SIDE";
+                        self.botLabel1!.position = CGPoint(x: CGRectGetWidth(self.frame)/2, y: CGRectGetHeight(self.frame) / 4);
+                        self.botLabel1!.fontSize = 30;
                     });
-                    self.botLabel2.runAction(SKAction.fadeAlphaTo(0.0, duration: 0.3));
+                    self.botLabel2!.runAction(SKAction.fadeAlphaTo(0.0, duration: 0.3));
                 },
             ]),
         ]);
@@ -316,14 +324,14 @@ class OnboardingScene: SKScene {
         var sideGUIActions = SKAction.group([
             SKAction.sequence([
                 // Your Side first
-                SKAction.runBlock{self.botLabel1.runAction(SKAction.fadeAlphaTo(1.0, duration: 0.3))},
+                SKAction.runBlock{self.botLabel1!.runAction(SKAction.fadeAlphaTo(1.0, duration: 0.3))},
                 SKAction.waitForDuration(0.5),
                 // Now Their Side
-                SKAction.runBlock{self.topLabel1.runAction(SKAction.fadeAlphaTo(1.0, duration: 0.3))},
+                SKAction.runBlock{self.topLabel1!.runAction(SKAction.fadeAlphaTo(1.0, duration: 0.3))},
                 SKAction.waitForDuration(0.4),
                 SKAction.runBlock{
                     self.dontCrossBox!.runAction(SKAction.fadeAlphaTo(0.3, duration: 0.2));
-                    self.topLabel2.runAction(SKAction.fadeAlphaTo(1.0, duration: 0.4));
+                    self.topLabel2!.runAction(SKAction.fadeAlphaTo(1.0, duration: 0.4));
                 },
             ]),
         ]);
@@ -354,26 +362,26 @@ class OnboardingScene: SKScene {
         // Hide shits
         dontCrossBox!.alpha = 0;
         // Reuse shits
-        topLabel1.alpha = 0;
-        topLabel2.alpha = 0;
-        topLabel1.text = "USE AS MANY FINGERS";
-        topLabel2.text = "AS YOU WANT";
-        topLabel1.fontSize = 18;
-        topLabel2.fontSize = 18;
-        topLabel1.position = CGPoint(x: CGRectGetMidX(self.frame), y: CGRectGetMidY(self.frame)+100);
-        topLabel2.position = CGPoint(x: CGRectGetMidX(self.frame), y: CGRectGetMidY(self.frame)+80);
+        topLabel1!.alpha = 0;
+        topLabel2!.alpha = 0;
+        topLabel1!.text = "USE AS MANY FINGERS";
+        topLabel2!.text = "AS YOU WANT";
+        topLabel1!.fontSize = 18;
+        topLabel2!.fontSize = 18;
+        topLabel1!.position = CGPoint(x: CGRectGetMidX(self.frame), y: CGRectGetMidY(self.frame)+100);
+        topLabel2!.position = CGPoint(x: CGRectGetMidX(self.frame), y: CGRectGetMidY(self.frame)+80);
         // New Shits
-        let fingerScale = (CGRectGetWidth(self.frame) / fingerLeft.size.width) * 0.2;
-        fingerLeft.position = CGPoint(x: 100, y: 0);
-        fingerLeft.scaleAsPoint = CGPoint(x: fingerScale, y: fingerScale);
-        fingerLeft.zPosition = 10;
-        fingerLeft.alpha = 0;
-        self.addChild(fingerLeft);
-        fingerRight.position = CGPoint(x: CGRectGetWidth(self.frame)-100, y: 30);
-        fingerRight.scaleAsPoint = CGPoint(x: fingerScale, y: fingerScale);
-        fingerRight.zPosition = 10;
-        fingerRight.alpha = 0;
-        self.addChild(fingerRight);
+        let fingerScale = (CGRectGetWidth(self.frame) / fingerLeft!.size.width) * 0.2;
+        fingerLeft!.position = CGPoint(x: 100, y: 0);
+        fingerLeft!.scaleAsPoint = CGPoint(x: fingerScale, y: fingerScale);
+        fingerLeft!.zPosition = 10;
+        fingerLeft!.alpha = 0;
+        self.addChild(fingerLeft!);
+        fingerRight!.position = CGPoint(x: CGRectGetWidth(self.frame)-100, y: 30);
+        fingerRight!.scaleAsPoint = CGPoint(x: fingerScale, y: fingerScale);
+        fingerRight!.zPosition = 10;
+        fingerRight!.alpha = 0;
+        self.addChild(fingerRight!);
 
         var resetActions = SKAction.group([
             SKAction.sequence([
@@ -389,10 +397,10 @@ class OnboardingScene: SKScene {
                 },
                 SKAction.waitForDuration(0.35),
                 // Ask it comes down near the end, hide line
-                SKAction.runBlock{self.divisionLine.runAction(SKAction.fadeAlphaTo(0.0, duration: 0.3))},
+                SKAction.runBlock{self.divisionLine!.runAction(SKAction.fadeAlphaTo(0.0, duration: 0.3))},
                 SKAction.waitForDuration(0.2),
                 // Fade out dat botlabels
-                SKAction.runBlock{self.botLabel1.runAction(SKAction.fadeAlphaTo(0.0, duration: 0.3))},
+                SKAction.runBlock{self.botLabel1!.runAction(SKAction.fadeAlphaTo(0.0, duration: 0.3))},
             ]),
         ]);
         
@@ -400,18 +408,18 @@ class OnboardingScene: SKScene {
             SKAction.sequence([
                 //Raise the fucking fingers
                 SKAction.runBlock{
-                    self.fingerLeft.runAction(SKAction.fadeAlphaTo(1.0, duration: 0.2));
-                    self.fingerLeft.runAction(SKAction.moveToY(40, duration: 0.2));
+                    self.fingerLeft!.runAction(SKAction.fadeAlphaTo(1.0, duration: 0.2));
+                    self.fingerLeft!.runAction(SKAction.moveToY(40, duration: 0.2));
                 },
                 SKAction.waitForDuration(0.2),
                 SKAction.runBlock{
-                    self.fingerRight.runAction(SKAction.fadeAlphaTo(1.0, duration: 0.2));
-                    self.fingerRight.runAction(SKAction.moveToY(70, duration: 0.2));
+                    self.fingerRight!.runAction(SKAction.fadeAlphaTo(1.0, duration: 0.2));
+                    self.fingerRight!.runAction(SKAction.moveToY(70, duration: 0.2));
                 },
                 SKAction.waitForDuration(0.2),
                 SKAction.runBlock{
-                    self.topLabel1.runAction(SKAction.fadeAlphaTo(1.0, duration: 0.3));
-                    self.topLabel2.runAction(SKAction.fadeAlphaTo(1.0, duration: 0.3));
+                    self.topLabel1!.runAction(SKAction.fadeAlphaTo(1.0, duration: 0.3));
+                    self.topLabel2!.runAction(SKAction.fadeAlphaTo(1.0, duration: 0.3));
                 },
             ]),
         ]);
