@@ -28,7 +28,7 @@ class OnboardingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let scene = OnboardingScene(size: view.bounds.size)
+        var scene = OnboardingScene(size: view.bounds.size)
         
         // Configure the view.
         

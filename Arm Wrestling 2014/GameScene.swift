@@ -11,15 +11,15 @@ import SpriteKit
 class GameScene: SKScene {
     
     // Elements
-    let myLabel = SKLabelNode(fontNamed:"Roboto-BlackItalic");
-    let myLabel2 = SKLabelNode(fontNamed: "Roboto-Black");
+    var myLabel:SKLabelNode?;
+    var myLabel2:SKLabelNode?;
     var game:SKSpriteNode?
     var p1 :Player1?
     var p2 :Player2?
     var inc: Float = 0;
     var defaultInc:Float?;
     // Flow
-    var timeLimit:CFTimeInterval = 6;
+    var timeLimit:CFTimeInterval = 8;
     var timeInitial:CFTimeInterval = 0;
     var timeSinceInit:CFTimeInterval = 0;
     let exitDuration:CFTimeInterval = 2;
@@ -44,8 +44,6 @@ class GameScene: SKScene {
     // Exit Setup
     typealias gameOverBlock = (didWin : Bool, p1TapCount: Int, p2TapCount: Int) -> Void
     var gameOverDelegate: gameOverBlock?
-
-    
     
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
@@ -54,16 +52,18 @@ class GameScene: SKScene {
         self.addChild(game!);
         game!.position = CGPoint(x:CGRectGetWidth(self.frame)/2, y:CGRectGetHeight(self.frame)/2);
         
-        myLabel.text = "GET READY!";
-        myLabel.fontSize = 40;
-        myLabel.position = CGPoint(x:0, y:-15);
-        myLabel.zPosition = 10;
-        game!.addChild(myLabel)
+        myLabel = SKLabelNode(fontNamed:"Roboto-BlackItalic");
+        myLabel!.text = "GET READY!";
+        myLabel!.fontSize = 40;
+        myLabel!.position = CGPoint(x:0, y:-15);
+        myLabel!.zPosition = 10;
+        game!.addChild(myLabel!)
         
-        myLabel2.fontSize = myLabel.fontSize;
-        myLabel2.position = myLabel.position;
-        myLabel2.zPosition = myLabel.zPosition;
-        game!.addChild(myLabel2)
+        myLabel2 = SKLabelNode(fontNamed:"Roboto-BlackItalic");
+        myLabel2!.fontSize = myLabel!.fontSize;
+        myLabel2!.position = myLabel!.position;
+        myLabel2!.zPosition = myLabel!.zPosition;
+        game!.addChild(myLabel2!)
         
         //bottom
         p1 = Player1(hex: 0x2D99EC, width: CGRectGetWidth(self.frame)*2, height: CGRectGetHeight(self.frame)/2);
@@ -75,7 +75,7 @@ class GameScene: SKScene {
         p2!.position = CGPointMake(0, (CGRectGetHeight(self.frame)/4));
         game!.addChild(p2!)
         
-        defaultInc = Float(CGRectGetHeight(self.frame)/25);
+        defaultInc = Float(CGRectGetHeight(self.frame)/75);
     }
     
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
@@ -209,7 +209,6 @@ class GameScene: SKScene {
                 //
                 // while game still in session, checks time passed
                 if(timeSinceInit >= timeLimit){
-                    //println(timeSinceInit);
                     intensityChangeCount();
                 }
             }
@@ -221,15 +220,15 @@ class GameScene: SKScene {
         if (timeSinceInit>2){
 
             if (timeSinceInit<3){
-                myLabel.text = "3";
+                myLabel!.text = "3";
             }else if (timeSinceInit<4){
-                myLabel.text = "2";
+                myLabel!.text = "2";
             }else if (timeSinceInit<5){
-                myLabel.text = "1";
+                myLabel!.text = "1";
             }else if (timeSinceInit<6){
-                myLabel.text = "START!";
+                myLabel!.text = "START!";
             }else if (timeSinceInit<7){
-                myLabel.text = "";
+                myLabel!.text = "";
                 gameStarted = true;
                 inc = defaultInc!;
             }
@@ -243,16 +242,18 @@ class GameScene: SKScene {
     func intensityChangeCount() {
             
         if (timeSinceInit < timeLimit+1){
-            myLabel.text = "3";
+            myLabel!.text = "3";
         }else if (timeSinceInit < timeLimit+2){
-            myLabel.text = "2";
+            myLabel!.text = "2";
         }else if (timeSinceInit < timeLimit+3){
-            myLabel.text = "1";
+            myLabel!.text = "1";
         }else if (timeSinceInit < timeLimit+4){
             changeGameIntensity();
             // reset
             //update timeInitial to restart interval
             timeInitial = 0;
+            timeLimit = CFTimeInterval(arc4random_uniform(10)+3);
+            println(timeLimit);
         }
         
     }
@@ -281,43 +282,43 @@ class GameScene: SKScene {
         var clearLabel = SKAction.sequence([
                 SKAction.waitForDuration(1),
                 SKAction.runBlock{
-                    self.myLabel.text = "";
-                    self.myLabel.position = CGPoint(x:0, y:-15);
-                    self.myLabel2.text = "";
+                    self.myLabel!.text = "";
+                    self.myLabel!.position = CGPoint(x:0, y:-15);
+                    self.myLabel2!.text = "";
                 }
             ]);
         
-        myLabel.runAction(clearLabel);
+        myLabel!.runAction(clearLabel);
     }
     
     //
     /* INTENSITIES */
     func initMorePower(){
         inc += 30;
-        myLabel.text = "MORE POWER!";
-        myLabel.fontSize = 40;
+        myLabel!.text = "MORE POWER!";
+        myLabel!.fontSize = 40;
         
         currentIntensity = Intensity.POWER;
     }
     
     func initReverseReverse(){
-        myLabel.text = "REVERSE";
-        myLabel.position = CGPoint(x:0, y:30);
-        myLabel2.runAction(SKAction.rotateByAngle(CGFloat(M_PI), duration: 0.01));
-        myLabel2.text = "REVERSE";
-        myLabel2.position = CGPoint(x:0, y:-30);
+        myLabel!.text = "REVERSE";
+        myLabel!.position = CGPoint(x:0, y:30);
+        myLabel2!.runAction(SKAction.rotateByAngle(CGFloat(M_PI), duration: 0.01));
+        myLabel2!.text = "REVERSE";
+        myLabel2!.position = CGPoint(x:0, y:-30);
         var rotate = SKAction.rotateByAngle(CGFloat(M_PI), duration: 0.2);
         game!.runAction(rotate);
         
-        currentIntensity = (currentIntensity != Intensity.REVERSE) ? Intensity.REVERSE:Intensity.DEFAULT;
+        currentIntensity = (!reversed) ? Intensity.REVERSE:Intensity.DEFAULT;
         reversed = (currentIntensity == Intensity.REVERSE) ? true:false;
     }
     
     func initVertical(){
-        myLabel.text = "OH";
-        myLabel.position = CGPoint(x:0, y:(CGRectGetHeight(self.frame)/8));
-        myLabel2.text = "NO!";
-        myLabel2.position = CGPoint(x:0, y:(CGRectGetHeight(self.frame)/8)*(-1));
+        myLabel!.text = "OH";
+        myLabel!.position = CGPoint(x:0, y:(CGRectGetHeight(self.frame)/8));
+        myLabel2!.text = "NO!";
+        myLabel2!.position = CGPoint(x:0, y:(CGRectGetHeight(self.frame)/8)*(-1));
         var deg:CGFloat;
         
         if(!vertical){
@@ -328,8 +329,8 @@ class GameScene: SKScene {
             currentIntensity = Intensity.VERTICAL;
             vertical = true;
             deg = CGFloat(M_PI/2);
-            myLabel.zRotation = CGFloat(M_PI/2)*(-1);
-            myLabel2.zRotation = CGFloat(M_PI/2)*(-1);
+            myLabel!.zRotation = CGFloat(M_PI/2)*(-1);
+            myLabel2!.zRotation = CGFloat(M_PI/2)*(-1);
         }else {
             p1!.size.height = CGRectGetHeight(self.frame)/2;
             p2!.size.height = CGRectGetHeight(self.frame)/2;
@@ -338,8 +339,8 @@ class GameScene: SKScene {
             currentIntensity = Intensity.DEFAULT;
             vertical = false;
             deg = CGFloat(M_PI/2)*(-1);
-            myLabel.zRotation = CGFloat(0);
-            myLabel2.zRotation = CGFloat(0);
+            myLabel!.zRotation = CGFloat(0);
+            myLabel2!.zRotation = CGFloat(0);
         }
         var rotate = SKAction.rotateByAngle(deg, duration: 0.2);
         game!.runAction(rotate);
@@ -349,16 +350,16 @@ class GameScene: SKScene {
     
     //
     // Display Who Won
-    func displayWinner(pOneDidWin: Bool, tie: Bool = false){
-        gameEnded = true;
+    func displayWinner(pOneDidWin: Bool){
         
         if(pOneDidWin){
-            myLabel.text = "B L U E   W I N S !";
+            myLabel!.text = "B L U E   W I N S !";
         }else{
-            myLabel.text = "P I N K   W I N S !";
+            myLabel!.text = "P I N K   W I N S !";
         }
         
-        myLabel.fontSize = 30;
+        myLabel!.fontSize = 32;
+        gameEnded = true;
     }
     
     func delayedExit(currentTime: CFTimeInterval) {
@@ -366,9 +367,9 @@ class GameScene: SKScene {
         {
             if let gameOverCallback = gameOverDelegate {
                 paused = true;
+                game = nil;
                 gameOverCallback(didWin: pOneDidWin, p1TapCount: p1!.taps, p2TapCount: p2!.taps);
             }
-            println("[GameScene] Game over");
         }
     }
 }

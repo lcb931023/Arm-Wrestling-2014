@@ -14,7 +14,7 @@ class GameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let scene = GameScene(size: view.bounds.size)
+        var scene = GameScene(size: view.bounds.size)
         
         // Configure the view.
         let skView = view as SKView
@@ -43,6 +43,7 @@ class GameViewController: UIViewController {
                 summaryViewController.p2TapCount = p2TapCount;
                 
                 validSelf.presentViewController(summaryViewController, animated:true, completion:nil);
+                
 
             }
         }
