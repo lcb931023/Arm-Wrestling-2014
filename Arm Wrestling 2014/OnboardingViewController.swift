@@ -24,33 +24,36 @@ import SpriteKit
 //}
 
 class OnboardingViewController: UIViewController {
-    
+
+    var scene:OnboardingScene!;
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        var scene = OnboardingScene(size: view.bounds.size)
+        scene = OnboardingScene(size: view.bounds.size)
         
         // Configure the view.
         
         let skView = view as SKView
-            
+        
         /* Sprite Kit applies additional optimizations to improve rendering performance */
         skView.ignoresSiblingOrder = true
-            
+        
         /* Set the scale mode to scale to fit the window */
         scene.scaleMode = .AspectFill
-            
+        
         skView.presentScene(scene)
         
         // Delegate
         scene.sequenceOverDelegate = {[weak self] () in
             if let validSelf = self {
-                
-                let titleViewController = validSelf.storyboard!.instantiateViewControllerWithIdentifier("TitleViewController") as TitleViewController
-                
-                validSelf.presentViewController(titleViewController, animated:true, completion:nil);
-                
+                validSelf.performSegueWithIdentifier("showTitleView", sender: self)
             }
+        }
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+        if segue.identifier == "showTitleView" {
+            println("deiniting onboarding scene");
+            //scene.delete(self);
         }
     }
     
