@@ -19,7 +19,7 @@ class GameScene: SKScene {
     var inc: Float = 0;
     var defaultInc:Float?;
     // Flow
-    var timeLimit:CFTimeInterval = 8;
+    var timeLimit:CFTimeInterval = 5;
     var timeInitial:CFTimeInterval = 0;
     var timeSinceInit:CFTimeInterval = 0;
     let exitDuration:CFTimeInterval = 2;
