@@ -92,12 +92,12 @@ class GameScene: SKScene {
                             p1!.increase(inc);
                             p2!.decrease(inc);
                             //increase player 2's tap count
-                            p1?.taps += 1;
+                            p1!.taps += 1;
                     } else {
                             p2!.increase(inc);
                             p1!.decrease(inc);
                             //increase player 1's tap count
-                            p2?.taps += 1;
+                            p2!.taps += 1;
                     }
                 }
                     
@@ -106,12 +106,12 @@ class GameScene: SKScene {
                             p1!.increase(inc);
                             p2!.decrease(inc);
                             //increase player 2's tap count
-                            p1?.taps += 1;
+                            p1!.taps += 1;
                     } else {
                             p2!.increase(inc);
                             p1!.decrease(inc);
                             //increase player 1's tap count
-                            p2?.taps += 1;
+                            p2!.taps += 1;
                     }
                 }
                 
@@ -120,12 +120,12 @@ class GameScene: SKScene {
                         p1!.increase(inc);
                         p2!.decrease(inc);
                         //increase player 2's tap count
-                        p1?.taps += 1;
+                        p1!.taps += 1;
                     } else {
                         p2!.increase(inc);
                         p1!.decrease(inc);
                         //increase player 1's tap count
-                        p2?.taps += 1;
+                        p2!.taps += 1;
                     }
                 }
                     
@@ -134,12 +134,12 @@ class GameScene: SKScene {
                             p1!.increase(inc);
                             p2!.decrease(inc);
                             //increase player 2's tap count
-                            p1?.taps += 1;
+                            p1!.taps += 1;
                     } else {
                             p2!.increase(inc);
                             p1!.decrease(inc);
                             //increase player 1's tap count
-                            p2?.taps += 1;
+                            p2!.taps += 1;
                     }
                 }
                 
