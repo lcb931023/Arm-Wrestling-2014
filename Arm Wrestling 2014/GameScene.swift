@@ -192,10 +192,7 @@ class GameScene: SKScene {
             {
                 // instruction & countdown
                 preGameCountdown();
-            }
-            
-            // If game has ended
-            if (gameEnded)
+            } else if (gameEnded)
             {
                 // End game delay to Summary View
                 if (!exitStarted)
@@ -231,6 +228,9 @@ class GameScene: SKScene {
                 myLabel!.text = "";
                 gameStarted = true;
                 inc = defaultInc!;
+                //update timeInitial to restart interval
+                timeInitial = 0;
+                
             }
             
             
