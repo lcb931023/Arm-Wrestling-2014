@@ -49,7 +49,7 @@ class OnboardingScene: SKScene {
         //top
         // Bottom overlays top
         // and top stretches to fill da whole thing
-        p2 = Player2(hex: 0xFF5D73, width: CGRectGetWidth(self.frame), height: CGRectGetHeight(self.frame));
+        p2 = Player2(hex: 0xff5b5b, width: CGRectGetWidth(self.frame), height: CGRectGetHeight(self.frame));
         p2!.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetHeight(self.frame)/2);
         p2!.zPosition = -10;
         self.addChild(p2!);
@@ -57,7 +57,7 @@ class OnboardingScene: SKScene {
         
         
         //bottom
-        p1 = Player1(hex: 0x2D99EC, width: CGRectGetWidth(self.frame), height: CGRectGetHeight(self.frame)/2);
+        p1 = Player1(hex: 0x545454, width: CGRectGetWidth(self.frame), height: CGRectGetHeight(self.frame)/2);
         p1!.position = CGPointMake(CGRectGetMidX(self.frame), 0 - CGRectGetHeight(self.frame)/2);
         p1!.zPosition = 1;
         self.addChild(p1!);
@@ -284,11 +284,11 @@ class OnboardingScene: SKScene {
         divisionLine!.zPosition = 10;
         divisionLine!.alpha = 0;
         self.addChild(divisionLine!);
-        dontCrossBox = SKSpriteNode(color: colorize(0x2D99EC, alpha: 1.0), size: CGSizeMake( CGRectGetWidth(self.frame), CGRectGetHeight(self.frame)*1/8) );
+        dontCrossBox = SKSpriteNode(color: colorize(0x000000, alpha: 0.2), size: CGSizeMake( CGRectGetWidth(self.frame), CGRectGetHeight(self.frame)*1/8) );
         dontCrossBox!.position = CGPoint(x: CGRectGetMidX(self.frame), y: (CGRectGetHeight(self.frame)*9/16) );
         dontCrossBox!.alpha = 0.0;
         self.addChild(dontCrossBox!);
-        topLabel2!.position = CGPoint(x: CGRectGetMidX(self.frame), y: (CGRectGetHeight(self.frame)*9/16) );
+        topLabel2!.position = CGPoint(x: CGRectGetMidX(self.frame), y: (CGRectGetHeight(self.frame)*8.8/16) );
         self.addChild(topLabel2!);
         //topLabel2!.zPosition = 10;
 

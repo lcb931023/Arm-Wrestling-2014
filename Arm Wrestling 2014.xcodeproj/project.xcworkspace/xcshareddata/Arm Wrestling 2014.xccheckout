@@ -6,22 +6,18 @@
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>2C753C07-857F-4D4F-8D7B-F06565BDFFCD</string>
-	<key>IDESourceControlProjectName</key>
-	<string>Arm Wrestling 2014</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>8D2858309EE92642A3C2F36C85B9B77562ADACEE</key>
-		<string>https://github.com/lcb931023/Arm-Wrestling-2014.git</string>
+		<string>https://github.com/lcb931023/Arm-Wrestling-2014/</string>
 	</dict>
-	<key>IDESourceControlProjectPath</key>
-	<string>Arm Wrestling 2014.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>8D2858309EE92642A3C2F36C85B9B77562ADACEE</key>
-		<string>../..</string>
+		<string>Arm-Wrestling-2014/</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://github.com/lcb931023/Arm-Wrestling-2014.git</string>
+	<string>https://github.com/lcb931023/Arm-Wrestling-2014/</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
